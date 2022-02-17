@@ -2,14 +2,20 @@ require('dotenv').config()
 const express = require('express');
 const app = express()
 const autheRouter = require('./routes/auth')
-
+const blogRouter = require('./routes/blog')
+const authentication = require('./middleware/authentication')
 
 //* connect to the connectDB
 const connectDB = require('./db/connect')
 
 app.use(express.json())
 
+
+
+
 app.use('/api/v1/auth',autheRouter)
+app.use('/api/v1/blogs',blogRouter)
+
 
 
 
