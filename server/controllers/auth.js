@@ -5,7 +5,7 @@ const User = require('../models/User')
  const register = async (req,res)=>{
     const {name,email,password} = req.body
     if(!email || !name || !password){
-        throw new BadRequestError('please porvide email name and password')
+        throw new BadRequestError('please provide name , email and password')
     }
     const user  = await User.create({...req.body})
     res.status(StatusCodes.CREATED).json({user})
