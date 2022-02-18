@@ -26,7 +26,7 @@ const login =async (req,res)=>{
         throw new BadRequestError('please provide the right passowrd')
     }
     const token = user.createJWT()
-    res.status(StatusCodes.OK).json({user:{userId:user.id,name:user.name},token})
+    res.status(StatusCodes.OK).json({user:{userId:user._id,name:user.name},token})
 }
 
 
