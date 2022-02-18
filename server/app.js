@@ -14,7 +14,7 @@ app.use(express.json())
 
 
 app.use('/api/v1/auth',autheRouter)
-app.use('/api/v1/blogs',blogRouter)
+app.use('/api/v1/blogs',authentication,blogRouter)
 
 
 

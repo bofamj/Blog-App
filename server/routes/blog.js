@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const {getAllBlogs} = require('../controllers/blog')
+const { getAllBlogs,
+    createBlog,
+    getBlog,
+    updateBlog,
+    deleteBlog} = require('../controllers/blog')
 
-router.get('/',getAllBlogs)
+router.route('/').get(getAllBlogs).post(createBlog)
+router.route('/:id').get(getBlog).patch(updateBlog).delete(deleteBlog)
 
 
 
