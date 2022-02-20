@@ -39,8 +39,10 @@ const updateBlog =async (req,res)=>{
 
 
 //* delete a single blog
-const deleteBlog = (req,res)=>{
-    res.status(StatusCodes.OK).json({msg:'delete user blogs'})
+const deleteBlog =async (req,res)=>{
+    const {user:{userId},params:{id:blogId}}=req
+    const blog = await Blog.findByIdAndDelete({_id:blogId,createdBy:userId})
+    res.status(StatusCodes.OK).send()
 }
 
 
