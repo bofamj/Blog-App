@@ -4,12 +4,12 @@ const app = express()
 const autheRouter = require('./routes/auth')
 const blogRouter = require('./routes/blog')
 const authentication = require('./middleware/authentication')
-
+const cors = require("cors");
 //* connect to the connectDB
 const connectDB = require('./db/connect')
 
 app.use(express.json())
-
+app.use(cors());
 
 
 
