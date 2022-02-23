@@ -10,7 +10,7 @@ const initialState = {
     massage:''
 }
 
-export const register = createAsyncThunk('user/regester' ,async (user,thunkAPI)=>{
+export const register = createAsyncThunk('/register' ,async (user,thunkAPI)=>{
     try {
         return await authService.register(user)
     } catch (error) {
@@ -34,20 +34,20 @@ export const userSlice = createSlice({
     
     extraReducers:(builder)=>{
         builder
-        .addCase(register.pending,(state)=>{
-            state.isLoading = true
-        })
-        .addCase(register.fulfilled,(state,acrion)=>{
-            state.isLoading=false 
-            state.isSuccess= true
-            state.user = acrion.payload
-        })
-        .addCase(register.rejected,(state,action)=>{
-            state.isLoading=false
-            state.isError=true
-            state.massage=action.payload
-            state.user = null
-        })
+            .addCase(register.pending,(state)=>{
+                state.isLoading = true
+            })
+            .addCase(register.fulfilled,(state,acrion)=>{
+                state.isLoading=false 
+                state.isSuccess= true
+                state.user = acrion.payload
+            })
+            .addCase(register.rejected,(state,action)=>{
+                state.isLoading=false
+                state.isError=true
+                state.massage=action.payload
+                state.user = null
+            })
     }
 })
 
