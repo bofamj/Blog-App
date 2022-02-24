@@ -3,23 +3,13 @@ import {useSelector,useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Form,Button,Row,Col} from 'react-bootstrap';
-import {register,reset} from '../app/features/userSlice'
+import {Container,Form,Button,Row,Col,Spinner} from 'react-bootstrap';
+import {register,reset,logout} from '../app/features/userSlice'
 
-import authService from '../app/authService'
+/* import authService from '../app/authService'
 
 import axios from 'axios';
-
-
-//const API_URl = 'http://localhost:5001/api/v1/auth/register'
-
-
-/* const form_state = {
-    email:'',
-    Password:'',
-    name:'',
-} */
-
+ */
 
 
 
@@ -40,14 +30,31 @@ const Ragester = () => {
     const handelInput = (e)=>{
         setUserData((prevState)=>({...prevState, [e.target.name]:e.target.value}))
     }
-
+    useEffect(()=>{
+        if(isError){
+            console.log(massage)
+        }
+        /* if(isSuccess || user){
+            navigate('/')
+        } */
+        dispatch(reset())
+    },[isError,isSuccess,user,dispatch,navigate,massage])
     const handelSubmit= (e)=>{
         e.preventDefault()
-        //const response = await axios.post(API_URl,{email,password,name})
         dispatch(register({email,password,name}))
+        setUserData({
+            email:'',
+            password:'',
+            name:'',
+        })
     }
 
-   //console.log(name,email,password);
+    if(isLoading){
+        return <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    }
+
   return (
       <div className="form">
         <Container >

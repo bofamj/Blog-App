@@ -19,6 +19,20 @@ export const register = createAsyncThunk('/register' ,async (user,thunkAPI)=>{
     }
 })
 
+
+export const login = createAsyncThunk('/login',async (user,thunkAPI)=>{
+    try {
+        return await authService.login(user)
+    } catch (error) {
+        const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
+        return thunkAPI(message)
+    }
+})
+
+export const logout = createAsyncThunk('/logout',async (user,thunkAPI)=>{
+    return await   authService.logout(user)
+})
+
 export const userSlice = createSlice({
     name:'user',
     initialState,
@@ -43,6 +57,23 @@ export const userSlice = createSlice({
                 state.user = acrion.payload
             })
             .addCase(register.rejected,(state,action)=>{
+                state.isLoading=false
+                state.isError=true
+                state.massage=action.payload
+                state.user = null
+            })
+    },
+    extraReducers:(builder)=>{
+        builder
+            .addCase(login.pending,(state)=>{
+                state.isLoading = true
+            })
+            .addCase(login.fulfilled,(state,acrion)=>{
+                state.isLoading=false 
+                state.isSuccess= true
+                state.user = acrion.payload
+            })
+            .addCase(login.rejected,(state,action)=>{
                 state.isLoading=false
                 state.isError=true
                 state.massage=action.payload
