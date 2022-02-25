@@ -9,3 +9,8 @@
   color: inherit;
   text-decoration: inherit;
 }
+.link:hover{
+  color: inherit;
+  text-decoration: inherit;
+  transform: scale(1.7)
+}
