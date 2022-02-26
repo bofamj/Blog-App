@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import '../App.css'
 const Home = () => {
   return (
-    <div className="form">
+    <div className="main">
         <Container fluid="md">
             <Row className="justify-content-md-center">
                 <Col xs lg="8">

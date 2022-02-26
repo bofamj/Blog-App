@@ -12,7 +12,7 @@ const blogSchema = new mongoose.Schema({
     },
     image:{
         type:String,
-        require:[true,'please add a image']
+        /* require:[true,'please add a image'] */
     },
     createdBy:{
         type:mongoose.Types.ObjectId,

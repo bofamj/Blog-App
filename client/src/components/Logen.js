@@ -16,14 +16,14 @@ const Logen = () => {
     const [password,setPassword]=useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
+    const {user}=useSelector((state)=>state.user)
 const handelSubmit = async (e)=>{
     e.preventDefault()
-    console.log('heloo');
     dispatch(login({email,password}))
     setEmail('')
     setPassword('')
-    navigate('/ragester')
+    navigate('/blog')
+    console.log(user.token);
     /* try{
             const response = await axios.post(API_URl ,{email,password})
             console.log(response.data);

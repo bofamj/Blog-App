@@ -30,7 +30,22 @@ export const login = createAsyncThunk('/login',async (user,thunkAPI)=>{
 })
 
 export const logout = createAsyncThunk('/logout',async (user,thunkAPI)=>{
-    return await   authService.logout(user)
+    try {
+        return await  authService.logout(user)
+    } catch (error) {
+        const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
+        return thunkAPI(message)
+    }
+    
+})
+
+export const getBlog = createAsyncThunk('/getBlog',async (user,thunkAPI)=>{
+    try {
+        return await  authService.getBlog(user,thunkAPI)
+    } catch (error) {
+        const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
+        return thunkAPI(message)
+    }
 })
 
 export const userSlice = createSlice({

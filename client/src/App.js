@@ -4,10 +4,12 @@ import Ragester from './components/Ragester';
 import Logen from './components/Logen';
 import Home from './pages/Home';
 import AllBlog from './pages/AllBlog';
+import NavBar from './components/NavBar'
 
 function App() {
   return (
     <BrowserRouter>
+      <NavBar/>
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ragester" element={<Ragester />} />

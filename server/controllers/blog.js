@@ -12,8 +12,8 @@ const getAllBlogs = async (req,res)=>{
 //*create a blog
 const createBlog =async (req,res)=>{
      const {titel,discripion,image}=req.body
-    if(!titel  || !discripion || !image){
-        throw new BadRequestError('please provide the title discripion and imge')
+    if(!titel  || !discripion ){
+        throw new BadRequestError('please provide the title and discripion ')
     } 
 
     req.body.createdBy = req.user.userId
@@ -26,7 +26,9 @@ const createBlog =async (req,res)=>{
 const getBlog =async (req,res)=>{
     const {user:{userId},params:{id:blogId}} = req
     const blog = await Blog.findOne({id:blogId,createdBy:userId})
-
+    if(!blog){
+       res.send('ther is no blog') 
+    }
     res.status(StatusCodes.OK).json(blog)
 }
 

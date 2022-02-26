@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Form,Button,Row,Col,Spinner} from 'react-bootstrap';
-import {register,reset,logout} from '../app/features/userSlice'
+import {register,reset,getBlog} from '../app/features/userSlice'
 
 /* import authService from '../app/authService'
 
@@ -34,14 +34,15 @@ const Ragester = () => {
         if(isError){
             console.log(massage)
         }
-         if(isSuccess || user){
+         /* if(isSuccess || user){
             navigate('/blog')
-        } 
+        }  */
         dispatch(reset())
     },[isError,isSuccess,user,dispatch,navigate,massage])
     const handelSubmit= (e)=>{
         e.preventDefault()
         dispatch(register({email,password,name}))
+        const AuthStr = 'Bearer ' + user.token;
         setUserData({
             email:'',
             password:'',

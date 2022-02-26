@@ -5,6 +5,13 @@
   align-items:center;
 
 }
+.main{
+  height:calc(100vh - 40px);
+  background-color:#eee4bd;
+  display:flex;
+  align-items:center;
+
+}
 .link {
   color: inherit;
   text-decoration: inherit;
