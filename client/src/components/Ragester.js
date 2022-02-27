@@ -34,9 +34,9 @@ const Ragester = () => {
         if(isError){
             console.log(massage)
         }
-         /* if(isSuccess || user){
+          if(isSuccess || user){
             navigate('/blog')
-        }  */
+        }  
         dispatch(reset())
     },[isError,isSuccess,user,dispatch,navigate,massage])
     const handelSubmit= (e)=>{

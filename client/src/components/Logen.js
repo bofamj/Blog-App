@@ -4,10 +4,9 @@ import {useSelector,useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Form,Button,Row,Col} from 'react-bootstrap';
+import {Container,Form,Button,Row,Col,Spinner} from 'react-bootstrap';
 import axios from 'axios';
-import {login,reset} from '../app/features/userSlice'
-import { register } from './../app/features/userSlice';
+import {login,reset,getBlog} from '../app/features/userSlice'
 
 const API_URl = 'http://localhost:5001/api/v1/auth/login'
 
@@ -16,7 +15,14 @@ const Logen = () => {
     const [password,setPassword]=useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const {user}=useSelector((state)=>state.user)
+    const {user,
+        isError,
+        isSuccess,
+        isLoading,
+        massage}=useSelector((state)=>state.user)
+
+
+
 const handelSubmit = async (e)=>{
     e.preventDefault()
     dispatch(login({email,password}))
@@ -24,12 +30,23 @@ const handelSubmit = async (e)=>{
     setPassword('')
     navigate('/blog')
     console.log(user.token);
-    /* try{
-            const response = await axios.post(API_URl ,{email,password})
-            console.log(response.data);
-    }catch(error){
-        console.log(error);
-    } */
+}
+
+useEffect(()=>{
+    if(isError){
+        console.log(massage);
+    }
+    if(isSuccess||user){
+        navigate('/blog')
+    }
+    dispatch(reset) 
+},[isError,isSuccess,navigate,dispatch,user,massage])
+
+
+if(isLoading){
+    return <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
 }
 
   return (

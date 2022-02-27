@@ -19,15 +19,16 @@ const {user}=useSelector((state)=>state.user)
         <Nav
             onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
         >
-            <Nav.Item>
+            {user? (<><Nav.Item>
                 <Nav.Link  onClick={logOUt} >LOGUOT</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="link-1">Link</Nav.Link>
+                <Nav.Link eventKey="/blog">All Blog</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="link-2">Link</Nav.Link>
+                <Nav.Link eventKey="link-2">User Blog</Nav.Link>
             </Nav.Item>
+            </>):''}
             <Nav.Item>
                 <Nav.Link eventKey="disabled" disabled>
                 Disabled

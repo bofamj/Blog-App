@@ -29,13 +29,12 @@ export const login = createAsyncThunk('/login',async (user,thunkAPI)=>{
     }
 })
 
-export const logout = createAsyncThunk('/logout',async (user,thunkAPI)=>{
-    try {
-        return await  authService.logout(user)
-    } catch (error) {
-        const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
-        return thunkAPI(message)
-    }
+export const logout = createAsyncThunk('/logout',async (user)=>{
+       try{
+                 await authService.logout(user)
+       }catch(error){
+           console.log(error);
+       }
     
 })
 
@@ -77,10 +76,7 @@ export const userSlice = createSlice({
                 state.massage=action.payload
                 state.user = null
             })
-    },
-    extraReducers:(builder)=>{
-        builder
-            .addCase(login.pending,(state)=>{
+             .addCase(login.pending,(state)=>{
                 state.isLoading = true
             })
             .addCase(login.fulfilled,(state,acrion)=>{
@@ -94,7 +90,11 @@ export const userSlice = createSlice({
                 state.massage=action.payload
                 state.user = null
             })
-    }
+            .addCase(logout.fulfilled,(state)=>{
+                state.isLoading=false 
+                state.isSuccess= true
+            })
+    },
 })
 
 export const {reset} = userSlice.actions

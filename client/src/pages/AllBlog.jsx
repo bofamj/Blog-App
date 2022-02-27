@@ -8,6 +8,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import '../App.css'
 
 const AllBlog = () => {
+    const [blogs,setBlogs]=useState([])
 const navigate = useNavigate()
 const dispatch = useDispatch()
 const {user}=useSelector((state)=>state.user)
@@ -20,7 +21,8 @@ const {user}=useSelector((state)=>state.user)
 const getAllBlogs = async ()=>{
     const AuthStr = 'Bearer ' + user.token
     const respons = await axios.get('http://localhost:5001/api/v1/blogs',{ 'headers': { 'Authorization': AuthStr } })
-    console.log(respons.data);
+    console.log(respons.data.bloges);
+    setBlogs(respons.data.bloges)
 }
 
 useEffect(()=>{
@@ -29,13 +31,15 @@ useEffect(()=>{
 
   return (
       <div className="main">
-            <Container fluid="md" >
-                <Row className="justify-content-md-center">
-                    <Col xs lg="8">
-                    
-                    </Col>
-                </Row>
-            </Container>
+        <Container  >
+            <Row  >
+                { blogs.map((blog)=>{
+                    return(
+                        <Col id={blog._id} md="4">{blog.titel}</Col> 
+                    )
+                })}
+            </Row>
+        </Container>
     </div>
   )
 }
