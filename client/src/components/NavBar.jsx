@@ -1,8 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Button,Row,Col,Nav} from 'react-bootstrap';
+import {Container,Button,Row,Col,Nav,Navbar} from 'react-bootstrap';
 import {reset,logout} from '../app/features/userSlice';
 import { useNavigate } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
+import {  Link } from 'react-router-dom';
+import '../App.css'
+
 
 const NavBar = () => {
   const navigate = useNavigate()
@@ -15,8 +18,26 @@ const {user}=useSelector((state)=>state.user)
 } 
 
   return (
-    <Container fluid="md">
-        <Nav
+    <Navbar bg="dark" expand="lg" variant="dark">
+        <Container >
+            <Navbar.Brand href="#home">BLOG</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav" >
+                {user?(<Nav className="me-auto">
+                <Nav.Link href="#home"><Link to='/' className='link'>Home</Link></Nav.Link>
+                <Nav.Link href="#link"><Link to='/blog' className='link'>All-blogs</Link></Nav.Link>
+                <Nav.Link href="#link"><Link to='/' className='link'>User-blogs</Link></Nav.Link>
+                <Nav.Link  onClick={logOUt}>LOGOUT</Nav.Link>
+                </Nav>):''}
+            </Navbar.Collapse>
+        </Container>
+    </Navbar>
+  )
+}
+
+export default NavBar
+
+/*<Nav
             onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
         >
             {user? (<><Nav.Item>
@@ -34,9 +55,4 @@ const {user}=useSelector((state)=>state.user)
                 Disabled
                 </Nav.Link>
             </Nav.Item>
-        </Nav>
-    </Container>
-  )
-}
-
-export default NavBar
+        </Nav> */

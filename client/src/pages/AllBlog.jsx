@@ -6,6 +6,7 @@ import {reset,logout} from '../app/features/userSlice';
 import { useNavigate } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
 import '../App.css'
+import SingelBlog from './../components/SingelBlog';
 
 const AllBlog = () => {
     const [blogs,setBlogs]=useState([])
@@ -30,17 +31,16 @@ useEffect(()=>{
 },[])
 
   return (
-      <div className="main">
+      
         <Container  >
             <Row  >
                 { blogs.map((blog)=>{
                     return(
-                        <Col id={blog._id} md="4">{blog.titel}</Col> 
+                        <Col id={blog._id} md="4"><SingelBlog/></Col> 
                     )
                 })}
             </Row>
         </Container>
-    </div>
   )
 }
 
