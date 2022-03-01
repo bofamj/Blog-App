@@ -8,6 +8,14 @@ const getAllBlogs = async (req,res)=>{
     res.status(StatusCodes.OK).json({bloges,count:bloges.length})
 }
 
+//*get a user blog
+
+ const getUserBloges = async (req,res)=>{
+    const {user:{userId}}=req
+    const bloges = await Blog.find({createdBy:userId})
+    res.status(StatusCodes.OK).json({bloges,count:bloges.length})
+} 
+
 
 //*create a blog
 const createBlog =async (req,res)=>{
@@ -57,5 +65,6 @@ module.exports ={
     createBlog,
     getBlog,
     updateBlog,
-    deleteBlog
+    deleteBlog,
+    getUserBloges
 }

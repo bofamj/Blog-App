@@ -1,19 +1,23 @@
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card,Button} from 'react-bootstrap';
 import {useSelector,useDispatch} from 'react-redux'
 import '../App.css'
 
-const SingelBlog = () => {
+const SingelBlog = ({discripion,titel,image}) => {
+  const [readMore, setReadMore] = useState(false);
+  //console.log(titel);
+  //const {titel}=blogs
+  //const {user}=useSelector((state)=>state.user)
   return (
-    <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+    <Card style={{ width: '18rem' }} className='h-100 d-inline-block'>
+        <Card.Img variant="top" src={image} />
         <Card.Body>
-            <Card.Title>Card Title</Card.Title>
+            <Card.Title>{titel}</Card.Title>
             <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+              {readMore ? discripion : `${discripion.substring(0, 100)}...`}
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary" className='mb-1' onClick={()=>setReadMore(!readMore)}>Read More</Button>
         </Card.Body>
     </Card>
   )

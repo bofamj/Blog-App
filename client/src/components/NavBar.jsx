@@ -14,11 +14,12 @@ const {user}=useSelector((state)=>state.user)
  const logOUt = ()=>{
     dispatch(logout(user))
     reset()
+    console.log('click');
     navigate('/')
 } 
 
   return (
-    <Navbar bg="dark" expand="lg" variant="dark">
+    <Navbar bg="dark" expand="lg" variant="dark" fixed="top" >
         <Container >
             <Navbar.Brand href="#home">BLOG</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -27,6 +28,7 @@ const {user}=useSelector((state)=>state.user)
                 <Nav.Link href="#home"><Link to='/' className='link'>Home</Link></Nav.Link>
                 <Nav.Link href="#link"><Link to='/blog' className='link'>All-blogs</Link></Nav.Link>
                 <Nav.Link href="#link"><Link to='/' className='link'>User-blogs</Link></Nav.Link>
+                <Nav.Link href="#link"><Link to='/' className='link'>Creat-Blog</Link></Nav.Link>
                 <Nav.Link  onClick={logOUt}>LOGOUT</Nav.Link>
                 </Nav>):''}
             </Navbar.Collapse>

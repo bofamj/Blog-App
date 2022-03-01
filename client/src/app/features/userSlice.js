@@ -93,6 +93,7 @@ export const userSlice = createSlice({
             .addCase(logout.fulfilled,(state)=>{
                 state.isLoading=false 
                 state.isSuccess= true
+                state.user = null
             })
     },
 })
