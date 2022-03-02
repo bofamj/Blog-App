@@ -1,6 +1,6 @@
-import {useState,useEffect} from 'react'
+import {useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Button,Row,Col,Nav} from 'react-bootstrap';
+import {Container,Button,Row,Col,Nav,Spinner} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
 import '../App.css'
@@ -12,40 +12,48 @@ import {getAllblogs} from '../app/features/blogSlice';
 const AllBlog = () => {
 const navigate = useNavigate()
 const dispatch = useDispatch()
+const {isSuccess}=useSelector((state)=>state.user)
 const {blog,
         isError,
-        isSuccess,
         isLoading,
         massage}=useSelector((state)=>state.blog)
  
    
+        
 
-/* const getAllBlogs = async ()=>{
+  useEffect(()=>{
+    if(isError){
+        console.log(massage);
+    }
+    /* if(isSuccess){
+        dispatch(getAllblogs())
+    } */
     
-    const respons = await axios.get('http://localhost:5001/api/v1/blogs',{ 'headers': { 'Authorization': AuthStr } })
     
-    setBlogs(respons.data.bloges)
-} */
-//console.log(blogs);
- useEffect(()=>{
-    dispatch(getAllblogs())
-    
-},[]) 
-const {bloges}=blog
-//console.log(bloges)
+},[isError,isSuccess,massage,dispatch])  
 
-  return (
-      
-        <Container className='mt-5 mb-5' >
-             <Row  >
-                { bloges.map((blog)=>{
-                    return(
-                        <Col id={blog._id} className='mt-5 ' ><SingelBlog {...blog}/></Col> 
-                    )
-                })}
-            </Row> 
-        </Container>
-  )
+
+     if(isLoading ){
+        return (
+            <div className="form">
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
+        )
+    } 
+
+        return (
+                <Container className='mt-5 mb-5' >
+                     <Row  >
+                            { blog.bloges.map((blog)=>{
+                                return(
+                                    <Col  className='mt-5 ' ><SingelBlog id={blog._id} {...blog}/></Col> 
+                                )
+                            })}  
+                    </Row> 
+                </Container>
+        )
 }
 
 export default AllBlog

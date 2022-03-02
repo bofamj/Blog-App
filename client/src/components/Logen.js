@@ -7,19 +7,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Form,Button,Row,Col,Spinner} from 'react-bootstrap';
 import axios from 'axios';
 import {login,reset,getBlog} from '../app/features/userSlice'
-
-const API_URl = 'http://localhost:5001/api/v1/auth/login'
+import {getAllblogs} from '../app/features/blogSlice';
 
 const Logen = () => {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const {user,
-        isError,
-        isSuccess,
-        isLoading,
-        massage}=useSelector((state)=>state.user)
+    const { user,
+            isError,
+            isSuccess,
+            isLoading,
+            massage}=useSelector((state)=>state.user)
 
 
 
@@ -28,21 +27,21 @@ const handelSubmit = async (e)=>{
     dispatch(login({email,password}))
     setEmail('')
     setPassword('')
-    navigate('/blog')
-    console.log(user.token);
+    //console.log(user.token);
 }
 
 useEffect(()=>{
     if(isError){
         console.log(massage);
     }
-    if(isSuccess||user){
+    if(isSuccess|| user){
+        dispatch(getAllblogs())
         navigate('/blog')
     }
     dispatch(reset) 
 },[isError,isSuccess,navigate,dispatch,user,massage])
 
-
+console.log(user);
 if(isLoading){
     return <Spinner animation="border" role="status">
     <span className="visually-hidden">Loading...</span>
