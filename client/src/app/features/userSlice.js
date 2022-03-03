@@ -65,10 +65,10 @@ export const userSlice = createSlice({
             .addCase(register.pending,(state)=>{
                 state.isLoading = true
             })
-            .addCase(register.fulfilled,(state,acrion)=>{
+            .addCase(register.fulfilled,(state,action)=>{
                 state.isLoading=false 
                 state.isSuccess= true
-                state.user = acrion.payload
+                state.user = action.payload
             })
             .addCase(register.rejected,(state,action)=>{
                 state.isLoading=false
@@ -79,10 +79,10 @@ export const userSlice = createSlice({
              .addCase(login.pending,(state)=>{
                 state.isLoading = true
             })
-            .addCase(login.fulfilled,(state,acrion)=>{
+            .addCase(login.fulfilled,(state,action)=>{
                 state.isLoading=false 
                 state.isSuccess= true
-                state.user = acrion.payload
+                state.user = action.payload
             })
             .addCase(login.rejected,(state,action)=>{
                 state.isLoading=false

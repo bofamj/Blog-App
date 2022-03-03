@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Form,Button,Row,Col,Spinner} from 'react-bootstrap';
-import axios from 'axios';
 import {login,reset,getBlog} from '../app/features/userSlice'
 import {getAllblogs} from '../app/features/blogSlice';
 
@@ -27,7 +26,6 @@ const handelSubmit = async (e)=>{
     dispatch(login({email,password}))
     setEmail('')
     setPassword('')
-    //console.log(user.token);
 }
 
 useEffect(()=>{

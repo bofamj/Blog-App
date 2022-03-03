@@ -21,3 +21,12 @@
   text-decoration: inherit;
   transform: scale(1.7)
 }
+.blog-form{
+  height:100vh;
+  background-color:#eee4bd;
+  display:flex;
+  align-items:center;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center
+}

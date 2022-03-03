@@ -5,6 +5,8 @@ import Logen from './components/Logen';
 import Home from './pages/Home';
 import AllBlog from './pages/AllBlog';
 import NavBar from './components/NavBar'
+import CreatBlog from './pages/CreatBlog';
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
           <Route path="/ragester" element={<Ragester />} />
           <Route path="/login" element={<Logen />} />
           <Route path="/blog" element={<AllBlog />} />
+          <Route path="/creat-blog" element={<CreatBlog />}/>
       </Routes>
     </BrowserRouter>
   );
