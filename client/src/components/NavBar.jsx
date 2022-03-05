@@ -27,7 +27,7 @@ const {user}=useSelector((state)=>state.user)
                 {user?(<Nav className="me-auto">
                 <Nav.Link href="#home"><Link to='/' className='link'>Home</Link></Nav.Link>
                 <Nav.Link href="#link"><Link to='/blog' className='link'>All-blogs</Link></Nav.Link>
-                <Nav.Link href="#link"><Link to='/' className='link'>User-blogs</Link></Nav.Link>
+                <Nav.Link href="#link"><Link to='/user-blogs' className='link'>User-blogs</Link></Nav.Link>
                 <Nav.Link href="#link"><Link to='/creat-blog' className='link'>Creat-Blog</Link></Nav.Link>
                 <Nav.Link  onClick={logOUt}>LOGOUT</Nav.Link>
                 </Nav>):''}

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button,Row,Col,Form,Container} from 'react-bootstrap';
+import {Button,Row,Col,Form,Container,FloatingLabel} from 'react-bootstrap';
 import {creatBlog} from '../app/features/blogSlice'
 import {useDispatch} from 'react-redux'
 
@@ -43,14 +43,21 @@ const handelSubmit = (e)=>{
                     </Col>
                 </Row>
                 <br />
-                <Row>
-                    <Form.Label column lg={2}>
+                        <FloatingLabel controlId="floatingTextarea2" label="Comments"  style={{height: '200px'}}>
+                                <Form.Control
+                                    
+                                    as="textarea"
+                                    placeholder="Leave a comment here"
+                                    style={{ height: '100px' }} name="discripion" value={discripion} onChange={handelChange}
+                                />
+                        </FloatingLabel>
+                    
+                    {/* <Form.Label column lg={2}>
                     Write Uer Blog
                     </Form.Label>
                     <Col>
                     <Form.Control type="text" name="discripion" value={discripion} onChange={handelChange} placeholder="Write Uer Blog" />
-                    </Col>
-                </Row>
+                    </Col> */}
                 <br />
                     <Button variant="primary" type="submit" >
                                 Submit

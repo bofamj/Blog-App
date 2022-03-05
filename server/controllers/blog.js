@@ -6,14 +6,20 @@ const Blog = require('../models/blog')
 const getAllBlogs = async (req,res)=>{
     const bloges = await Blog.find()
     res.status(StatusCodes.OK).json({bloges,count:bloges.length})
+    
 }
 
 //*get a user blog
 
  const getUserBloges = async (req,res)=>{
-    const {user:{userId}}=req
-    const bloges = await Blog.find({createdBy:userId})
-    res.status(StatusCodes.OK).json({bloges,count:bloges.length})
+    try{
+        console.log(req.user);
+        const bloge = await Blog.find({createdBy:req.user.userId})
+        res.status(StatusCodes.OK).json({bloge,count:bloge.length}) 
+    }catch(error){
+        console.log(error);
+    }
+    
 } 
 
 

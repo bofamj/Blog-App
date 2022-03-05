@@ -10,6 +10,8 @@ const initialState = {
     massage:''
 }
 
+
+//* register user
 export const register = createAsyncThunk('/register' ,async (user,thunkAPI)=>{
     try {
         return await authService.register(user)
@@ -20,6 +22,8 @@ export const register = createAsyncThunk('/register' ,async (user,thunkAPI)=>{
 })
 
 
+
+//* login user
 export const login = createAsyncThunk('/login',async (user,thunkAPI)=>{
     try {
         return await authService.login(user)
@@ -29,6 +33,8 @@ export const login = createAsyncThunk('/login',async (user,thunkAPI)=>{
     }
 })
 
+
+//* logout user
 export const logout = createAsyncThunk('/logout',async (user)=>{
        try{
                  await authService.logout(user)
@@ -38,14 +44,7 @@ export const logout = createAsyncThunk('/logout',async (user)=>{
     
 })
 
-export const getBlog = createAsyncThunk('/getBlog',async (user,thunkAPI)=>{
-    try {
-        return await  authService.getBlog(user,thunkAPI)
-    } catch (error) {
-        const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
-        return thunkAPI(message)
-    }
-})
+
 
 export const userSlice = createSlice({
     name:'user',

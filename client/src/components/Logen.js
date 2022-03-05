@@ -6,7 +6,7 @@ import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Form,Button,Row,Col,Spinner} from 'react-bootstrap';
 import {login,reset,getBlog} from '../app/features/userSlice'
-import {getAllblogs} from '../app/features/blogSlice';
+import {getAllblogs,getUserBlogs} from '../app/features/blogSlice';
 
 const Logen = () => {
     const [email,setEmail]=useState('')
@@ -34,6 +34,7 @@ useEffect(()=>{
     }
     if(isSuccess|| user){
         dispatch(getAllblogs())
+        dispatch(getUserBlogs())
         navigate('/blog')
     }
     dispatch(reset) 

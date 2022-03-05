@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import AllBlog from './pages/AllBlog';
 import NavBar from './components/NavBar'
 import CreatBlog from './pages/CreatBlog';
+import UserBlog from './pages/UserBlog';
+
 
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
           <Route path="/login" element={<Logen />} />
           <Route path="/blog" element={<AllBlog />} />
           <Route path="/creat-blog" element={<CreatBlog />}/>
+          <Route path="/user-blogs" element={<UserBlog />}/>
       </Routes>
     </BrowserRouter>
   );

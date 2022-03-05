@@ -12,7 +12,7 @@ import {getAllblogs} from '../app/features/blogSlice';
 const AllBlog = () => {
 const navigate = useNavigate()
 const dispatch = useDispatch()
-const {isSuccess}=useSelector((state)=>state.user)
+const {isSuccess,user}=useSelector((state)=>state.user)
 const {blog,
         isError,
         isLoading,
@@ -25,15 +25,15 @@ const {blog,
     if(isError){
         console.log(massage);
     }
-    /* if(isSuccess){
+     if(user){
         dispatch(getAllblogs())
-    } */
+    } 
     
     
-},[isError,isSuccess,massage,dispatch])  
+},[isError,user,massage,dispatch])  
 
 
-     if(isLoading ){
+if(isLoading ){
         return (
             <div className="form">
                 <Spinner animation="border" role="status">
@@ -44,15 +44,16 @@ const {blog,
     } 
 
         return (
-                <Container className='mt-5 mb-5' >
-                     <Row  >
-                            { blog.bloges.map((blog)=>{
+            <Container className='mt-5 mb-5' >
+                    <Row  >
+                        {console.log(blog.bloges)}
+                            {/* { blog.bloges.map((blog)=>{
                                 return(
-                                    <Col  className='mt-5 ' ><SingelBlog id={blog._id} {...blog}/></Col> 
-                                )
-                            })}  
+                                        <Col  className='mt-5 ' ><SingelBlog id={blog._id} {...blog}/></Col> 
+                            )
+                        })}   */}
                     </Row> 
-                </Container>
+            </Container>
         )
 }
 

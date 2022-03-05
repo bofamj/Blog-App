@@ -14,6 +14,17 @@ export const getAllblogs = createAsyncThunk('/allBlogs',async (_,thunkAPI)=>{
 })
 
 
+//*get a user blogs
+export const  getUserBlogs = createAsyncThunk('/getBlog',async (_,thunkAPI)=>{
+    try {
+        const token = thunkAPI.getState().user.user.token
+        return await  blogService.getUserBlogs(token)
+    } catch (error) {
+        const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
+        return thunkAPI(message)
+    }
+})
+
 //*crate a blog
 export const creatBlog = createAsyncThunk('/creatBlog',async (userBlog,thunkAPI)=>{
     try {
@@ -70,6 +81,20 @@ export const blogSlice = createSlice({
                 state.blog.push(action.payload)
             })
             .addCase(creatBlog.rejected,(state,action)=>{
+                state.isError=true
+                state.isLoading=false
+                state.massage=action.payload
+            })
+            .addCase(getUserBlogs.pending,(state)=>{
+                state.isLoading=true
+            })
+            .addCase(getUserBlogs.fulfilled,(state,action)=>{
+                state.isError=false
+                state.isSuccess=true
+                state.isLoading=false
+                state.blog=action.payload
+            })
+            .addCase(getUserBlogs.rejected,(state,action)=>{
                 state.isError=true
                 state.isLoading=false
                 state.massage=action.payload
