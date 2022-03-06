@@ -49,7 +49,7 @@ if(isLoading ){
                         {console.log(blog.bloges)}
                              { blog.bloges.map((blog)=>{
                                 return(
-                                        <Col  className='mt-5 ' ><SingelBlog id={blog._id} {...blog}/></Col> 
+                                        <Col  className='mt-5 d-flex justify-content-center'  ><SingelBlog id={blog._id} {...blog}/></Col> 
                             )
                         })}   
                     </Row> 

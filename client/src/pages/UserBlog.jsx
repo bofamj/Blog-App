@@ -22,6 +22,9 @@ const {blog,
             dispatch(getUserBlogs())
             
         },[])  
+
+
+
         if(isLoading ){
             return (
                 <div className="form">
@@ -33,12 +36,12 @@ const {blog,
         } 
     
             return (
-                    <Container className='mt-5 mb-5' >
+                    <Container className='mt-5 mb-5 ' >
                          <Row  >
                          {console.log(blog.bloge)}
                                   { blog.bloge.map((blog)=>{
                                     return(
-                                            <Col  className='mt-5 ' ><UserBlogs {...blog}/></Col>
+                                            <Col  className='mt-5 d-flex justify-content-center' ><UserBlogs {...blog}/></Col>
                                         ) 
                                 })}    
                         </Row> 

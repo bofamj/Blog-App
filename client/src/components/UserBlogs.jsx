@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card,Button} from 'react-bootstrap';
 import {useSelector,useDispatch} from 'react-redux'
@@ -9,12 +9,16 @@ import '../App.css'
 const UserBlogs = ({discripion,titel,image,_id}) => {
   const [readMore, setReadMore] = useState(false);
   const dispatch = useDispatch()
+  const {blog,
+          isError,
+          isSuccess} = useSelector((state)=>state.blog)
 
   const handelDlete = ()=>{
-    console.log(_id);
-     dispatch(deleteUserBlog(_id))
-    dispatch(getUserBlogs()) 
+    dispatch(deleteUserBlog(_id))
+   // dispatch(getUserBlogs())
   }
+  
+  
   return (
     <Card style={{ width: '18rem' }} className='h-100 d-inline-block'>
         <Card.Img variant="top" src={image} />
