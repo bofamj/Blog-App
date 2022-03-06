@@ -47,11 +47,11 @@ if(isLoading ){
             <Container className='mt-5 mb-5' >
                     <Row  >
                         {console.log(blog.bloges)}
-                            {/* { blog.bloges.map((blog)=>{
+                             { blog.bloges.map((blog)=>{
                                 return(
                                         <Col  className='mt-5 ' ><SingelBlog id={blog._id} {...blog}/></Col> 
                             )
-                        })}   */}
+                        })}   
                     </Row> 
             </Container>
         )

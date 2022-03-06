@@ -15,7 +15,7 @@ export const getAllblogs = createAsyncThunk('/allBlogs',async (_,thunkAPI)=>{
 
 
 //*get a user blogs
-export const  getUserBlogs = createAsyncThunk('/getBlog',async (_,thunkAPI)=>{
+export const  getUserBlogs = createAsyncThunk('/getUserBlogs',async (_,thunkAPI)=>{
     try {
         const token = thunkAPI.getState().user.user.token
         return await  blogService.getUserBlogs(token)
@@ -35,6 +35,18 @@ export const creatBlog = createAsyncThunk('/creatBlog',async (userBlog,thunkAPI)
          const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
          console.log(message);
         //return thunkAPI(message) 
+    }
+})
+
+//*delete a blog
+
+export const deleteUserBlog = createAsyncThunk('/deleteUserBlog',async (blogId,thunkAPI)=>{
+    try{
+        const token =thunkAPI.getState().user.user.token
+        return await blogService.deleteUserBlog(blogId,token)
+    }catch(error){
+        const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
+         console.log(message);
     }
 })
 
@@ -95,6 +107,20 @@ export const blogSlice = createSlice({
                 state.blog=action.payload
             })
             .addCase(getUserBlogs.rejected,(state,action)=>{
+                state.isError=true
+                state.isLoading=false
+                state.massage=action.payload
+            })
+            .addCase(deleteUserBlog.pending,(state)=>{
+                state.isLoading=true
+            })
+            .addCase(deleteUserBlog.fulfilled,(state,action)=>{
+                state.isError=false
+                state.isSuccess=true
+                state.isLoading=false
+                state.blog=action.payload
+            })
+            .addCase(deleteUserBlog.rejected,(state,action)=>{
                 state.isError=true
                 state.isLoading=false
                 state.massage=action.payload

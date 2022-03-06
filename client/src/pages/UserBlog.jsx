@@ -18,15 +18,10 @@ const {blog,
         isLoading,
         massage}=useSelector((state)=>state.blog)
         useEffect(()=>{
-            if(isError){
-                console.log(massage);
-            }
-             if(user){
-                dispatch(getUserBlogs())
-            } 
+
+            dispatch(getUserBlogs())
             
-            
-        },[isError,user,massage,dispatch])  
+        },[])  
         if(isLoading ){
             return (
                 <div className="form">
@@ -41,11 +36,11 @@ const {blog,
                     <Container className='mt-5 mb-5' >
                          <Row  >
                          {console.log(blog.bloge)}
-                                 { blog.bloge.map((blog)=>{
+                                  { blog.bloge.map((blog)=>{
                                     return(
                                             <Col  className='mt-5 ' ><UserBlogs {...blog}/></Col>
                                         ) 
-                                })}   
+                                })}    
                         </Row> 
                     </Container>
             )

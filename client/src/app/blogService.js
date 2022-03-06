@@ -2,6 +2,7 @@ import axios from 'axios';
 
 
 const BLOG_URL='http://localhost:5001/api/v1/blogs'
+const BLOG_URL_DELET='http://localhost:5001/api/v1/blogs/'
 const CRAT_URL = 'http://localhost:5001/api/v1/blogs/user'
 
 //*get all blog
@@ -28,11 +29,20 @@ const getUserBlogs = async (token) =>{
     return response.data
 }
 
+//*delete a user blogs
+
+const deleteUserBlog = async (blogId,token) =>{
+    const config = {headers: { Authorization: `Bearer ${token}`}}
+    const response = await axios.delete(BLOG_URL_DELET+blogId,config)
+    return response
+}
+
 
 const blogService = {
     getAllBlogs,
     creatBlog,
-    getUserBlogs
+    getUserBlogs,
+    deleteUserBlog
 }
 
 export default blogService

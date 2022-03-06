@@ -26,6 +26,7 @@ const handelSubmit = async (e)=>{
     dispatch(login({email,password}))
     setEmail('')
     setPassword('')
+    
 }
 
 useEffect(()=>{
@@ -34,9 +35,9 @@ useEffect(()=>{
     }
     if(isSuccess|| user){
         dispatch(getAllblogs())
-        dispatch(getUserBlogs())
         navigate('/blog')
     }
+    //dispatch(getUserBlogs())
     dispatch(reset) 
 },[isError,isSuccess,navigate,dispatch,user,massage])
 

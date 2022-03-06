@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
 import {  Link } from 'react-router-dom';
 import '../App.css'
-
+import {getUserBlogs} from '../app/features/blogSlice';
+import {getAllblogs} from '../app/features/blogSlice';
 
 const NavBar = () => {
   const navigate = useNavigate()
@@ -26,8 +27,8 @@ const {user}=useSelector((state)=>state.user)
             <Navbar.Collapse id="basic-navbar-nav" >
                 {user?(<Nav className="me-auto">
                 <Nav.Link href="#home"><Link to='/' className='link'>Home</Link></Nav.Link>
-                <Nav.Link href="#link"><Link to='/blog' className='link'>All-blogs</Link></Nav.Link>
-                <Nav.Link href="#link"><Link to='/user-blogs' className='link'>User-blogs</Link></Nav.Link>
+                <Nav.Link href="#link"><Link to='/blog' className='link' onClick={()=>dispatch(getAllblogs())}>All-blogs</Link></Nav.Link>
+                <Nav.Link href="#link"><Link to='/user-blogs' className='link' onClick={()=>dispatch(getUserBlogs())}>User-blogs</Link></Nav.Link>
                 <Nav.Link href="#link"><Link to='/creat-blog' className='link'>Creat-Blog</Link></Nav.Link>
                 <Nav.Link  onClick={logOUt}>LOGOUT</Nav.Link>
                 </Nav>):''}
