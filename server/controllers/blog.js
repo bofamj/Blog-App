@@ -31,6 +31,7 @@ const createBlog =async (req,res)=>{
     } 
 
     req.body.createdBy = req.user.userId
+    req.body.author = req.user.name
     const blog = await Blog.create(req.body)
     res.status(StatusCodes.CREATED).json(blog)
 }

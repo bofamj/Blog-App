@@ -27,10 +27,10 @@ const {blog,
 
         if(isLoading ){
             return (
-                <div className="form">
-                    <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                    </Spinner>
+                <div className="d-flex justify-content-center mt-5 text-center  spener">
+                    <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
                 </div>
             )
         } 
