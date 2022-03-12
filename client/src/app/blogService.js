@@ -34,7 +34,8 @@ const getUserBlogs = async (token) =>{
 const deleteUserBlog = async (blogId,token) =>{
     const config = {headers: { Authorization: `Bearer ${token}`}}
     const response = await axios.delete(BLOG_URL_DELET+blogId,config)
-    return response
+    console.log(response)
+    return response.data
 }
 
 

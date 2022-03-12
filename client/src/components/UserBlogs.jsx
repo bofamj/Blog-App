@@ -5,6 +5,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import {deleteUserBlog} from '../app/features/blogSlice'
 import {getUserBlogs} from '../app/features/blogSlice';
 import '../App.css'
+import Model from '../components/Model';
 
 const UserBlogs = ({discripion,titel,image,_id}) => {
   const [readMore, setReadMore] = useState(false);
@@ -15,7 +16,7 @@ const UserBlogs = ({discripion,titel,image,_id}) => {
 
   const handelDlete = ()=>{
     dispatch(deleteUserBlog(_id))
-   // dispatch(getUserBlogs())
+
   }
   
   
@@ -31,6 +32,7 @@ const UserBlogs = ({discripion,titel,image,_id}) => {
             <Button variant="primary" >Edete</Button>{' '}
             <Button variant="danger" className='ms-2' onClick={handelDlete}>Dleate</Button>
         </Card.Body>
+      {/* <Model/> */}
     </Card>
   )
 }

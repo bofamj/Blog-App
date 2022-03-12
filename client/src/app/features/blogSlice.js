@@ -118,7 +118,8 @@ export const blogSlice = createSlice({
                 state.isError=false
                 state.isSuccess=true
                 state.isLoading=false
-                state.blog=action.payload
+                state.blog=state.blog.filter(blog=>blog.bloges._id !== action.payload._id)
+                
             })
             .addCase(deleteUserBlog.rejected,(state,action)=>{
                 state.isError=true

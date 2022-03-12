@@ -15,7 +15,6 @@ const {user}=useSelector((state)=>state.user)
  const logOUt = ()=>{
     dispatch(logout(user))
     reset()
-    console.log('click');
     navigate('/')
 } 
 

@@ -59,7 +59,8 @@ const updateBlog =async (req,res)=>{
 const deleteBlog =async (req,res)=>{
     const {user:{userId},params:{id:blogId}}=req
     const blog = await Blog.findByIdAndDelete({_id:blogId,createdBy:userId})
-    res.status(StatusCodes.OK).send()
+    res.status(StatusCodes.OK).json(blog)
+    console.log(blog)
 }
 
 
