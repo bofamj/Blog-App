@@ -39,7 +39,7 @@ const handelSubmit = (e)=>{
                     <Form.Control type="text" name="titel" value={titel} onChange={handelChange}placeholder="Inter Titel"  />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Weite tour blog</Form.Label>
+                    <Form.Label>Weite your blog</Form.Label>
                     <Form.Control as="textarea" rows={3} name="discripion" value={discripion} onChange={handelChange}/>
                 </Form.Group>
                 <Button variant="primary" type="submit" >

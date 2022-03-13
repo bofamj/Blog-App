@@ -5,9 +5,9 @@ import {useSelector,useDispatch} from 'react-redux'
 import {deleteUserBlog} from '../app/features/blogSlice'
 import {getUserBlogs} from '../app/features/blogSlice';
 import '../App.css'
-import Model from '../components/Model';
 
-const UserBlogs = ({discripion,titel,image,_id}) => {
+
+const UserBlogs = ({discripion,titel,image,_id,setIsOpen}) => {
   const [readMore, setReadMore] = useState(false);
   const dispatch = useDispatch()
   const {blog,
@@ -21,7 +21,7 @@ const UserBlogs = ({discripion,titel,image,_id}) => {
   
   
   return (
-    <Card style={{ width: '18rem' }} className='h-100 d-inline-block'>
+    <Card style={{ width: '18rem' }} className='h-100 d-inline-block singel-blog'>
         <Card.Img variant="top" src={image} />
         <Card.Body>
             <Card.Title>{titel}</Card.Title>
@@ -29,10 +29,9 @@ const UserBlogs = ({discripion,titel,image,_id}) => {
               {readMore ? discripion : `${discripion.substring(0, 100)}...`}
             </Card.Text>
             {/* <Button variant="primary" className='mb-1' onClick={()=>setReadMore(!readMore)}>Read More</Button> */}
-            <Button variant="primary" >Edete</Button>{' '}
+            <Button variant="primary" onClick={()=>setIsOpen(true)}>Edete</Button>{' '}
             <Button variant="danger" className='ms-2' onClick={handelDlete}>Dleate</Button>
         </Card.Body>
-      {/* <Model/> */}
     </Card>
   )
 }
