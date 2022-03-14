@@ -51,6 +51,17 @@ export const deleteUserBlog = createAsyncThunk('/deleteUserBlog',async (blogId,t
 })
 
 
+//* edite blog
+export const editeBlog = createAsyncThunk('/editeBlog',async(blogId,edir,thunkAPI)=>{
+    try {
+        const token = thunkAPI.getState().user.user.token
+        return await blogService.editeBlog(blogId,edir,token)
+    } catch (error) {
+        const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
+         console.log(message);
+    }
+})
+
 
 const initialState= {
     blog:[],
@@ -122,6 +133,20 @@ export const blogSlice = createSlice({
                 console.log(action.payload.id)
             })
             .addCase(deleteUserBlog.rejected,(state,action)=>{
+                state.isError=true
+                state.isLoading=false
+                state.massage=action.payload
+            })
+            .addCase(editeBlog.pending,(state)=>{
+                state.isLoading=true
+            })
+            .addCase(editeBlog.fulfilled,(state,action)=>{
+                state.isError=false
+                state.isSuccess=true
+                state.isLoading=false
+                state.blog=action.payload
+            })
+            .addCase(editeBlog.rejected,(state,action)=>{
                 state.isError=true
                 state.isLoading=false
                 state.massage=action.payload

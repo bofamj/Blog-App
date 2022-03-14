@@ -7,7 +7,7 @@ import {getUserBlogs} from '../app/features/blogSlice';
 import '../App.css'
 
 
-const UserBlogs = ({discripion,titel,image,_id,setIsOpen}) => {
+const UserBlogs = ({discripion,titel,image,_id,handelEdete}) => {
   const [readMore, setReadMore] = useState(false);
   const dispatch = useDispatch()
   const {blog,
@@ -16,7 +16,6 @@ const UserBlogs = ({discripion,titel,image,_id,setIsOpen}) => {
 
   const handelDlete = ()=>{
     dispatch(deleteUserBlog(_id))
-
   }
   
   
@@ -29,7 +28,7 @@ const UserBlogs = ({discripion,titel,image,_id,setIsOpen}) => {
               {readMore ? discripion : `${discripion.substring(0, 100)}...`}
             </Card.Text>
             {/* <Button variant="primary" className='mb-1' onClick={()=>setReadMore(!readMore)}>Read More</Button> */}
-            <Button variant="primary" onClick={()=>setIsOpen(true)}>Edete</Button>{' '}
+            <Button variant="primary" id={_id} onClick={(e)=>handelEdete(e)}>Edete</Button>{' '}
             <Button variant="danger" className='ms-2' onClick={handelDlete}>Dleate</Button>
         </Card.Body>
     </Card>

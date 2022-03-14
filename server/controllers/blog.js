@@ -13,7 +13,7 @@ const getAllBlogs = async (req,res)=>{
 
  const getUserBloges = async (req,res)=>{
     try{
-        console.log(req.user);
+        
         const bloge = await Blog.find({createdBy:req.user.userId})
         res.status(StatusCodes.OK).json({bloge,count:bloge.length}) 
     }catch(error){
@@ -59,8 +59,8 @@ const updateBlog =async (req,res)=>{
 const deleteBlog =async (req,res)=>{
     const {user:{userId},params:{id:blogId}}=req
     const blog = await Blog.findByIdAndDelete({_id:blogId,createdBy:userId})
-    res.status(StatusCodes.OK).json(blog)
-    console.log(blog)
+    res.status(StatusCodes.OK).json(blog._id)
+    
 }
 
 
