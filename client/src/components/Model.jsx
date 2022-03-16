@@ -8,13 +8,15 @@ import '../App.css'
 const Model = ({setIsOpen,edite}) => {
     //const useSelector = useSelector()
     const dispatch = useDispatch()
-    const{discripion,titel,_id}=edite[0];
+    const{_id}=edite;
     const [editValue,setEditValue]=useState({
-        titel:titel,
-        discripion:discripion
+        titel:edite[0].titel,
+        discripion:edite[0].discripion
     })
+    const {titel,discripion}=editValue;
     const handelClick = ()=>{
         setIsOpen(false)
+        console.log(edite)
     }
 
     const handelChange =(e)=>{
@@ -22,8 +24,11 @@ const Model = ({setIsOpen,edite}) => {
     }
     //console.log(editValue)
 const handelSubmit=()=>{
-    console.log(dispatch(editeBlog(_id,editValue)))
-    //dispatch(editeBlog(_id,editValue))
+    //console.log(dispatch(editeBlog({_id,editValue})))
+    /* const blobs = {titel,discripion}
+    console.log(_id) */
+    //dispatch(editeBlog(_id,{titel,discripion}))
+    console.log(dispatch(editeBlog(_id,{titel,discripion})))
 }
 
   return (

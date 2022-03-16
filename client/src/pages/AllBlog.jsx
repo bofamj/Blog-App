@@ -46,8 +46,8 @@ if(isLoading ){
         return (
             <Container className='mt-5 mb-5' >
                     <Row  >
-                        {console.log(blog.bloges)}
-                             { blog.bloges.map((blog)=>{
+                        {console.log(blog)}
+                             { blog.map((blog)=>{
                                 return(
                                         <Col  className='mt-5 d-flex justify-content-center'  ><SingelBlog id={blog._id} {...blog}/></Col> 
                             )

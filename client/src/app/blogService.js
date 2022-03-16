@@ -39,9 +39,9 @@ const deleteUserBlog = async (blogId,token) =>{
 }
 
 //* edite blogService
-const editeBlog = async (blogId,edir,token)=>{
+const editeBlog = async (blogId,token)=>{
    const  config = {headers: { Authorization: `Bearer ${token}`}}
-    const response = await axios.patch(BLOG_URL_DELET+blogId,edir,config)
+    const response = await axios.patch(`http://localhost:5001/api/v1/blogs/${blogId}`,config)
     return response.data
 }
 

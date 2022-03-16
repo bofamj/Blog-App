@@ -29,10 +29,11 @@ const {blog,
 
         const handelEdete = (e)=> {
             setIsOpen(true)
-             const edet = blog.bloge.filter((blog)=>blog._id === e.target.id)
+             const edet = blog.filter((blog)=>blog._id === e.target.id)
              setEdite(edet)
+             
         }
-
+        console.log(edite)
 
         if(isLoading ){
             return (
@@ -48,7 +49,7 @@ const {blog,
                     <Container className='mt-5 mb-5 ' >
                          <Row  >
                          {/* {console.log(blog.bloge)} */}
-                                  { blog.bloge.map((blog)=>{
+                                  { blog.map((blog)=>{
                                     return(
                                             <Col  className='mt-5 d-flex justify-content-center' ><UserBlogs {...blog} handelEdete={handelEdete}/></Col>
                                         ) 

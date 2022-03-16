@@ -4,18 +4,23 @@ const Blog = require('../models/blog')
 
 //* get all bloges
 const getAllBlogs = async (req,res)=>{
+    //const blog = await Blog.find()
+    res.status(StatusCodes.OK).json(await Blog.find())
+    
+}
+/*const getAllBlogs = async (req,res)=>{
     const bloges = await Blog.find()
     res.status(StatusCodes.OK).json({bloges,count:bloges.length})
     
-}
+}*/ 
 
 //*get a user blog
 
  const getUserBloges = async (req,res)=>{
     try{
         
-        const bloge = await Blog.find({createdBy:req.user.userId})
-        res.status(StatusCodes.OK).json({bloge,count:bloge.length}) 
+        //const bloge = await Blog.find({createdBy:req.user.userId})
+        res.status(StatusCodes.OK).json(await Blog.find({createdBy:req.user.userId})) 
     }catch(error){
         console.log(error);
     }
@@ -50,8 +55,8 @@ const getBlog =async (req,res)=>{
 //* update a single blog
 const updateBlog =async (req,res)=>{
     const {user:{userId},params:{id:blogId},body:{titel,discripion,image}} = req
-    const blog = await Blog.findByIdAndUpdate({_id:blogId,createdBy:userId},req.body,{new:true,runValidators:true})
-    res.status(StatusCodes.OK).json(blog)
+    //const blog = await Blog.findByIdAndUpdate({_id:blogId,createdBy:userId},req.body,{new:true,runValidators:true})
+    res.status(StatusCodes.OK).json(await Blog.findByIdAndUpdate({_id:blogId,createdBy:userId},req.body,{new:true,runValidators:true}))
 }
 
 

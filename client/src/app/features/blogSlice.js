@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import blogService from '../blogService'
-
+import axios from 'axios';
 
 //*get all blogs
 export const getAllblogs = createAsyncThunk('/allBlogs',async (_,thunkAPI)=>{
@@ -52,16 +52,34 @@ export const deleteUserBlog = createAsyncThunk('/deleteUserBlog',async (blogId,t
 
 
 //* edite blog
-export const editeBlog = createAsyncThunk('/editeBlog',async(blogId,edir,thunkAPI)=>{
+ export const editeBlog = createAsyncThunk('/editeBlog',async(blogId,userBlog,thunkAPI)=>{
     try {
         const token = thunkAPI.getState().user.user.token
-        return await blogService.editeBlog(blogId,edir,token)
+        return await blogService.editeBlog(blogId,userBlog,token)
     } catch (error) {
         const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
          console.log(message);
     }
-})
-
+    
+}) 
+/* const BLOG_URL_DELET='http://localhost:5001/api/v1/blogs/'
+export const editeBlog = createAsyncThunk('/editeBlog',async(blogId,edir,thunkAPI)=>{
+    try {
+        const token = thunkAPI.getState().user.user.token
+        const  config = {headers: { Authorization: `Bearer ${token}`}}
+     const response = await axios.patch(BLOG_URL_DELET+blogId,edir,config)
+     return response.data
+        //return await blogService.editeBlog(blogId,edir,token)
+    } catch (error) {
+        const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
+         console.log(message);
+    }
+}) */
+/* const editeBlog = async (blogId,edir,token)=>{
+    const  config = {headers: { Authorization: `Bearer ${token}`}}
+     const response = await axios.patch(BLOG_URL_DELET+blogId,edir,config)
+     return response.data
+ } */
 
 const initialState= {
     blog:[],
@@ -88,6 +106,7 @@ export const blogSlice = createSlice({
                 state.isSuccess=true
                 state.isLoading=false
                 state.blog=action.payload
+                console.log(action.payload)
             })
             .addCase(getAllblogs.rejected,(state,action)=>{
                 state.isError=true
@@ -116,6 +135,7 @@ export const blogSlice = createSlice({
                 state.isSuccess=true
                 state.isLoading=false
                 state.blog=action.payload
+                console.log(action.payload)
             })
             .addCase(getUserBlogs.rejected,(state,action)=>{
                 state.isError=true
@@ -144,7 +164,7 @@ export const blogSlice = createSlice({
                 state.isError=false
                 state.isSuccess=true
                 state.isLoading=false
-                state.blog=action.payload
+                state.blog = action.payload
             })
             .addCase(editeBlog.rejected,(state,action)=>{
                 state.isError=true
