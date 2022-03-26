@@ -13,6 +13,14 @@ const getAllBlogs = async (token)=>{
     //console.log(response.data)
 }
 
+//* creat blog
+
+const creatBlog = async (userBlog,token)=>{
+    const config = {headers: { Authorization: `Bearer ${token}`}} 
+    const response = await axios.post(BLOG_URL,userBlog,config)
+    return response.data
+}
+
 //*get a user blogs
 
 const getUserBlogs = async (token) =>{
@@ -21,29 +29,38 @@ const getUserBlogs = async (token) =>{
     return response.data
 }
 
-//*delet a blog
+//*delete a user blogs
 
-
-const deletBlog = async (blogId,token) =>{
+const deleteUserBlog = async (blogId,token) =>{
     const config = {headers: { Authorization: `Bearer ${token}`}}
     const response = await axios.delete(BLOG_URL_DELET+blogId,config)
+    console.log(response)
     return response.data
 }
 
-//*creat a blog 
-
-const creatBlog =async (userBlog,token)=>{
-    const config = {headers: { Authorization: `Bearer ${token}`}}
-    const response = await axios.post(BLOG_URL,userBlog,config)
+//* edite blogService
+const editeBlog = async (blogId,{userBlog},token)=>{
+   const  config = {headers: { Authorization: `Bearer ${token}`}}
+    const response = await axios.patch(`http://localhost:5001/api/v1/blogs/${blogId}`,{userBlog},config)
     return response.data
 }
 
+//* get a singel abloge
+
+/* const getSingelBloge = async (blogId,token) =>{
+    const  config = {headers: { Authorization: `Bearer ${token}`}}
+    const response = await axios.get(BLOG_URL_DELET+blogId,config)
+    return response.data
+    
+} */
 
 const blogService = {
     getAllBlogs,
+    creatBlog,
     getUserBlogs,
-    deletBlog,
-    creatBlog
+    deleteUserBlog,
+    editeBlog,
+    //getSingelBloge
 }
 
 export default blogService

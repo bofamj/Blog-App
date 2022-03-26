@@ -24,16 +24,16 @@ const {blog,
             dispatch(getUserBlogs())
             
         },[])  
+        console.log(blog);
 
         //*handel edite
 
         const handelEdete = (e)=> {
-            setIsOpen(true)
+            /* setIsOpen(true)
              const edet = blog.filter((blog)=>blog._id === e.target.id)
-             setEdite(edet)
+             setEdite(edet) */
              
         }
-        console.log(edite)
 
         if(isLoading ){
             return (
@@ -55,7 +55,7 @@ const {blog,
                                         ) 
                                 })}    
                         </Row> 
-                        {isOpen && (<div className='model'> <Model  setIsOpen={setIsOpen} edite={edite}/></div>)}
+                        {/* {isOpen && (<div className='model'> <Model  setIsOpen={setIsOpen} edite={edite}/></div>)} */}
                     </Container>
             )
 

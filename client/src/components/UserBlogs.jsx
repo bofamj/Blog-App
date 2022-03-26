@@ -2,8 +2,8 @@ import React, { useState,useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card,Button} from 'react-bootstrap';
 import {useSelector,useDispatch} from 'react-redux'
-import {deleteUserBlog} from '../app/features/blogSlice'
-import {getUserBlogs} from '../app/features/blogSlice';
+//import {deleteUserBlog} from '../app/features/blogSlice'
+import {getUserBlogs,deletBlog} from '../app/features/blogSlice';
 import '../App.css'
 
 
@@ -15,7 +15,9 @@ const UserBlogs = ({discripion,titel,image,_id,handelEdete}) => {
           isSuccess} = useSelector((state)=>state.blog)
 
   const handelDlete = ()=>{
-    dispatch(deleteUserBlog(_id))
+    dispatch(deletBlog(_id))
+    //dispatch(deleteUserBlog(_id))
+    //console.log(_id)
   }
   
   
@@ -28,8 +30,8 @@ const UserBlogs = ({discripion,titel,image,_id,handelEdete}) => {
               {readMore ? discripion : `${discripion.substring(0, 100)}...`}
             </Card.Text>
             {/* <Button variant="primary" className='mb-1' onClick={()=>setReadMore(!readMore)}>Read More</Button> */}
-            <Button variant="primary" id={_id} onClick={(e)=>handelEdete(e)}>Edete</Button>{' '}
-            <Button variant="danger" className='ms-2' onClick={handelDlete}>Dleate</Button>
+            <Button variant="primary" className='btn-user-cart-edete' id={_id} onClick={(e)=>handelEdete(e)}>Edete</Button>{' '}
+            <Button variant="danger" className='ms-2 btn-user-cart-delet' onClick={handelDlete}>Dleate</Button>
         </Card.Body>
     </Card>
   )

@@ -21,12 +21,12 @@ const CreatBlog = () => {
 const handelSubmit = (e)=>{
     e.preventDefault()
     //console.log(titel,discripion);
-    despatch(creatBlog({titel,discripion}))
+     despatch(creatBlog({titel,discripion}))
     setAddBlog({
         titel:'',
         discripion:'',
     });
-}
+} 
 
 
 

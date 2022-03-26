@@ -28,7 +28,7 @@ const handelSubmit=()=>{
     /* const blobs = {titel,discripion}
     console.log(_id) */
     //dispatch(editeBlog(_id,{titel,discripion}))
-    console.log(dispatch(editeBlog(_id,{titel,discripion})))
+    //console.log(dispatch(editeBlog(_id,{titel,discripion})))
 }
 
   return (

@@ -30,18 +30,19 @@ const login = async (userData)=>{
 
 
 //*logout user
-const logout = ()=>{
+const logout = () => {
     localStorage.removeItem('user')
-}
+  }
+  
 
- const getBlog = async (userToken)=>{
+ /* const getBlog = async (userToken)=>{
     const response = await axios.get(GET_BLOG,userToken)
     console.log(response.data);
     if (response.data){
         localStorage.setItem('user',JSON.stringify(response.data))
     }
     return response.data
-}
+} */
 
 
 
@@ -49,7 +50,7 @@ const authService = {
     register,
     login,
     logout,
-    getBlog
+    //getBlog
 }
 
 

@@ -7,6 +7,7 @@ import AllBlog from './pages/AllBlog';
 import NavBar from './components/NavBar'
 import CreatBlog from './pages/CreatBlog';
 import UserBlog from './pages/UserBlog';
+import ReadMore from './pages/ReadMore';
 
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/blog" element={<AllBlog />} />
           <Route path="/creat-blog" element={<CreatBlog />}/>
           <Route path="/user-blogs" element={<UserBlog />}/>
+          <Route path="/:id" element={<ReadMore />}/>
       </Routes>
     </BrowserRouter>
   );

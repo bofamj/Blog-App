@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Card,Button} from 'react-bootstrap';
 import {useSelector,useDispatch} from 'react-redux'
+import { Link } from "react-router-dom";
 import '../App.css'
 
-const SingelBlog = ({discripion,titel,image}) => {
+const SingelBlog = ({discripion,titel,image,author,_id}) => {
   const [readMore, setReadMore] = useState(false);
   //console.log(titel);
   //const {titel}=blogs
@@ -15,9 +16,12 @@ const SingelBlog = ({discripion,titel,image}) => {
         <Card.Body>
             <Card.Title>{titel}</Card.Title>
             <Card.Text>
-              {readMore ? discripion : `${discripion.substring(0, 100)}...`}
+                {/* <Link to={`/${_id}`} >{readMore ? discripion : `${discripion.substring(0, 100)}... Read More`}
+                </Link> */}
+              
             </Card.Text>
-            <Button variant="primary" className='mb-1' onClick={()=>setReadMore(!readMore)}>Read More</Button>
+            {/* <Button variant="primary" className='mb-1' onClick={()=>setReadMore(!readMore)}>Read More</Button> */}
+            <p className='author'>Author : {author}</p>
         </Card.Body>
     </Card>
   )
