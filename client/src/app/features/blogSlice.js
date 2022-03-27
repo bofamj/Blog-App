@@ -48,6 +48,23 @@ export const creatBlog = createAsyncThunk('blog/creatBlog',async(userBlog,thunkA
 })
 
 
+//*edeat blog
+/* export const edeatBlog = createAsyncThunk('blog/edeatBlog',async(blogId,userBlog,thunkAPI)=>{
+  try {
+    const token  = thunkAPI.getState().user.user.token
+    return await blogService.edeatBlog(blogId,userBlog,token)
+} catch (error) {
+    const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
+    return thunkAPI(message)
+}
+}) */
+export const edeatBlog =createAsyncThunk('blog/edeatBlog', async (blogId,userBlog,thunkAPI)=>{
+  const token  = thunkAPI.getState().user.user.token
+  const config = {headers: { Authorization: `Bearer ${token}`}}
+  const response = await axios.patch(`http://localhost:5001/api/v1/blogs/${blogId}`,userBlog,config)
+  return response.data
+} )
+
 const initialState = {
     blog: [],
     isError: false,
@@ -96,7 +113,8 @@ export const blogSlice = createSlice({
       .addCase(deletBlog.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.blog.fliter((blog)=>blog._id !== action.payload.id)
+        state.blog = state.blog.filter(
+          (blog) => blog._id !== action.payload)
       })
       .addCase(deletBlog.rejected, (state, action) => {
         state.isLoading = false
@@ -112,6 +130,21 @@ export const blogSlice = createSlice({
         state.blog.push(action.payload)
       })
       .addCase(creatBlog.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(edeatBlog.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(edeatBlog.fulfilled, (state, action) => {
+        console.log(action.payload)
+        state.isLoading = false
+        state.isSuccess = true
+        state.blog = action.payload
+        console.log(action.payload)
+      })
+      .addCase(edeatBlog.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

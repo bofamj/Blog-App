@@ -2,35 +2,35 @@ import {useEffect,useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Modal,Button,Form} from 'react-bootstrap';
 import {useSelector,useDispatch} from 'react-redux'
-import {editeBlog} from '../app/features/blogSlice'
+import {edeatBlog} from '../app/features/blogSlice'
 import '../App.css'
 
 const Model = ({setIsOpen,edite}) => {
     //const useSelector = useSelector()
     const dispatch = useDispatch()
-    const{_id}=edite;
+    //const{_id}=edite;
     const [editValue,setEditValue]=useState({
         titel:edite[0].titel,
-        discripion:edite[0].discripion
+        discripion:edite[0].discripion,
+        id:edite[0]._id
     })
-    const {titel,discripion}=editValue;
+    const {id,titel,discripion}=editValue;
     const handelClick = ()=>{
         setIsOpen(false)
         console.log(edite)
     }
 
-    const handelChange =(e)=>{
-        setEditValue(prevState=>({...prevState,[e.target.name]:e.target.value}))
-    }
+    
     //console.log(editValue)
 const handelSubmit=()=>{
-    //console.log(dispatch(editeBlog({_id,editValue})))
-    /* const blobs = {titel,discripion}
-    console.log(_id) */
-    //dispatch(editeBlog(_id,{titel,discripion}))
-    //console.log(dispatch(editeBlog(_id,{titel,discripion})))
+    dispatch(edeatBlog(id,{titel,discripion}))
+    //console.log(dispatch(edeatBlog({id:id,titel:editValue?.titel,discripion:editValue?.discripion}))) 
+    //console.log(editValue) 
+    //dispatch(edeatBlog(id,{titel,discripion}))
 }
-
+const handelChange =(e)=>{
+    setEditValue(prevState=>({...prevState,[e.target.name]:e.target.value}))
+}
   return (
     <Modal.Dialog >
         <Modal.Header >

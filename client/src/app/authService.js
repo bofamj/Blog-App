@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API_URl = 'http://localhost:5001/api/v1/auth/register'
 const API_URl_LOGIN = 'http://localhost:5001/api/v1/auth/login'
-const GET_BLOG = 'http://localhost:5001api/v1/blogs'
+//const GET_BLOG = 'http://localhost:5001api/v1/blogs'
 
 
 

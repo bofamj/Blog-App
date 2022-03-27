@@ -38,12 +38,21 @@ const creatBlog =async (userBlog,token)=>{
     return response.data
 }
 
+//*edeat blog
+
+/* const edeatBlog = async (blogId,userBlog,token)=>{
+    const config = {headers: { Authorization: `Bearer ${token}`}}
+    const response = await axios.patch(BLOG_URL_DELET+blogId,userBlog,config)
+    return response.data
+} */
+
 
 const blogService = {
     getAllBlogs,
     getUserBlogs,
     deletBlog,
-    creatBlog
+    creatBlog,
+    //edeatBlog
 }
 
 export default blogService

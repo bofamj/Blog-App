@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
 import '../App.css'
 import Model from '../components/Model';
-import {getUserBlogs} from '../app/features/blogSlice';
+import {getUserBlogs,edeatBlog,deletBlog,reset} from '../app/features/blogSlice';
 import UserBlogs from '../components/UserBlogs'
 
 
@@ -15,26 +15,39 @@ const UserBlog = () => {
     const navigate = useNavigate()
 const dispatch = useDispatch()
 const {isSuccess,user}=useSelector((state)=>state.user)
-const {blog,
-        isError,
-        isLoading,
-        massage}=useSelector((state)=>state.blog)
-        useEffect(()=>{
+const { blog, isLoading, isError, message } = useSelector(
+    (state) => state.blog
+  )
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message)
+    }
+
+    if (!user) {
+      navigate('/login')
+    }
+
+    dispatch(getUserBlogs())
+
+    return () => {
+      dispatch(reset())
+    }
+  }, [user, navigate, isError, message, dispatch])
+        /* useEffect(()=>{
 
             dispatch(getUserBlogs())
             
-        },[])  
-        console.log(blog);
+        },[]) */  
 
         //*handel edite
 
         const handelEdete = (e)=> {
-            /* setIsOpen(true)
+             setIsOpen(true)
              const edet = blog.filter((blog)=>blog._id === e.target.id)
-             setEdite(edet) */
+             setEdite(edet) 
              
         }
-
         if(isLoading ){
             return (
                 <div className="d-flex justify-content-center mt-5 text-center  spener">
@@ -51,11 +64,11 @@ const {blog,
                          {/* {console.log(blog.bloge)} */}
                                   { blog.map((blog)=>{
                                     return(
-                                            <Col  className='mt-5 d-flex justify-content-center' ><UserBlogs {...blog} handelEdete={handelEdete}/></Col>
+                                            <Col  className='mt-5 d-flex justify-content-center' ><UserBlogs blog={blog} handelEdete={handelEdete} /></Col>
                                         ) 
                                 })}    
                         </Row> 
-                        {/* {isOpen && (<div className='model'> <Model  setIsOpen={setIsOpen} edite={edite}/></div>)} */}
+                         {isOpen && (<div className='model'> <Model  setIsOpen={setIsOpen} edite={edite}/></div>)} 
                     </Container>
             )
 
