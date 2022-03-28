@@ -58,11 +58,13 @@ export const creatBlog = createAsyncThunk('blog/creatBlog',async(userBlog,thunkA
     return thunkAPI(message)
 }
 }) */
-export const edeatBlog =createAsyncThunk('blog/edeatBlog', async (blogId,{userBlog},thunkAPI)=>{
+export const edeatBlog =createAsyncThunk('blog/edeatBlog', async (userBlog,thunkAPI)=>{
+  const {id,titel,discripion}=userBlog
+  console.log(userBlog)
   try {
   const token  = thunkAPI.getState().user.user.token
   const config = {headers: { Authorization: `Bearer ${token}`}}
-  const response = await axios.patch(`http://localhost:5001/api/v1/blogs/${blogId}`,{userBlog},config)
+  const response = await axios.patch(`http://localhost:5001/api/v1/blogs/${id}`,{titel,discripion},config)
   return response.data
   }catch (error) {console.log(error);}
 } )
@@ -143,7 +145,7 @@ export const blogSlice = createSlice({
         console.log(action.payload.id)
         state.isLoading = false
         state.isSuccess = true
-        state.blog = state.blog.map((blog)=>blog._id == action.payload.id ? action.payload:'')
+        state.blog = state.blog.map((blog)=>blog._id == action.payload._id ? action.payload:blog)
         console.log(action.payload)
       })
       .addCase(edeatBlog.rejected, (state, action) => {

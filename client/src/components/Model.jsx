@@ -41,16 +41,13 @@ const Model = ({setIsOpen,edite,isOpen}) => {
       };
     const handelClick = ()=>{
         setIsOpen(!isOpen)
-        //console.log(edite)
     }
 
     
     //console.log(editValue)
 const handelSubmit=()=>{
-    dispatch(edeatBlog(id,{titel,discripion}))
-    //console.log(edeatBlog({id:id,titel:editValue?.titel,discripion:editValue?.discripion})) 
-    //console.log(id) 
-    //dispatch(edeatBlog(id,{titel,discripion}))
+    dispatch(edeatBlog(editValue))
+    setIsOpen(!isOpen)
 }
 const handelChange =(e)=>{
     setEditValue(prevState=>({...prevState,[e.target.name]:e.target.value}))

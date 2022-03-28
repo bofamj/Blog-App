@@ -13,7 +13,7 @@
 
 .form{
   height:100vh;
-  background-color:#eee4bd;
+  background-color:rgb(249, 249, 249);
   display:flex;
   align-items:center;
 
@@ -95,15 +95,15 @@
 .btn-btn:hover:after{
   width: 100%;
 }
-/* .link {
+ .links {
   color: #fff;
   text-decoration: inherit;
 }
-.link:hover{
+.links:hover{
   color: inherit;
   text-decoration: inherit;
   transform: scale(1.7)
-} */
+} 
 .blog-form{
   height:100vh;
   background-color:rgb(249, 249, 249);

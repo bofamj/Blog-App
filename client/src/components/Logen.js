@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Form,Button,Row,Col,Spinner} from 'react-bootstrap';
 import {login,reset,getBlog} from '../app/features/userSlice'
 import {getAllblogs,getUserBlogs} from '../app/features/blogSlice';
-
+import { Link } from "react-router-dom";
 const Logen = () => {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
@@ -65,12 +65,20 @@ if(isLoading){
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} value={password} />
                         </Form.Group>
-                        <Button variant="primary" type="submit" className='mr-5' >
+                        <div className="mb-4  w-50  btn-continer" >
+                            <div   className=' btn-btn' style={{ color: '#aaaa'}}>
+                                <span className="link" to="/login" style={{ color: 'black'}}>Submit</span>
+                            </div>{' '}
+                            <div   className=' btn-btn'>
+                                <Link className="link" to="/ragester" style={{ color: 'black'}}>RAGESTER</Link>
+                            </div>
+                        </div>
+                        {/* <Button variant="primary" type="submit" className='mr-5' >
                             Submit
                         </Button>
                         <Button variant="primary" type="submit"  >
                             Register
-                        </Button>
+                        </Button> */}
                     </Form>
                 </Col>
             </Row>
