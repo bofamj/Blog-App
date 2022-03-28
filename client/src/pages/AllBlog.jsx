@@ -6,8 +6,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import '../App.css'
 import SingelBlog from './../components/SingelBlog';
 import {getAllblogs} from '../app/features/blogSlice';
-
-
+import { motion } from 'framer-motion';
 
 const AllBlog = () => {
 const navigate = useNavigate()
@@ -46,16 +45,18 @@ if(isLoading ){
     } 
 
         return (
-            <Container className='mt-5 mb-5' >
-                    <Row  >
-                        {/* {console.log(blog)} */}
-                             { blog.map((blog)=>{
-                                return(
-                                        <Col  className='mt-5 d-flex justify-content-center'  ><SingelBlog id={blog._id} {...blog}/></Col> 
-                            )
-                        })}   
-                    </Row> 
-            </Container>
+           
+                <Container className='mt-5 mb-5' >
+                        <Row  >
+                            {/* {console.log(blog)} */}
+                                { blog.map((blog)=>{
+                                    return(
+                                            <Col  className='mt-5 d-flex justify-content-center'  ><SingelBlog id={blog._id} {...blog}/></Col> 
+                                )
+                            })}   
+                        </Row> 
+                </Container>
+            
         )
 }
 

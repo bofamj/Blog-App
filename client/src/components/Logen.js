@@ -41,7 +41,6 @@ useEffect(()=>{
     dispatch(reset) 
 },[isError,isSuccess,navigate,dispatch,user,massage])
 
-console.log(user);
 if(isLoading){
     return <Spinner animation="border" role="status">
     <span className="visually-hidden">Loading...</span>
