@@ -25,10 +25,12 @@ const {blog,
     if(isError){
         console.log(massage);
     }
-     if(user){
+     if(user !== null){
         dispatch(getAllblogs())
     } 
-    
+    /* if(!user){
+        navigate('/login')
+    } */
     
 },[isError,user,massage,dispatch])  
 

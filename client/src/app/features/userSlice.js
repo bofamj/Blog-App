@@ -3,7 +3,7 @@ import authService from '../authService'
 const user = JSON.parse(localStorage.getItem('user'))
 
 const initialState = {
-    user:user ? user : null,
+    user: null,
     isError:false,
     isSuccess:false,
     isLoading:false,
@@ -36,7 +36,7 @@ export const login = createAsyncThunk('/login',async (user,thunkAPI)=>{
 
 //* logout user
 export const logout = createAsyncThunk('auth/logout', () => {
-    localStorage.clear()
+    authService.logout(user)
   })
 
 
@@ -83,7 +83,7 @@ export const userSlice = createSlice({
                 state.massage=action.payload
                 state.user = null
             })
-            .addCase(logout.fulfilled, (state) => {
+            .addCase(logout.fulfilled, (state,action) => {
                 state.user = null
               })
     },

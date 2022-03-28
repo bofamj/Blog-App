@@ -13,7 +13,8 @@ const NavBar = () => {
 const dispatch = useDispatch()
 const {user}=useSelector((state)=>state.user)
  const logOUt = ()=>{
-    dispatch(logout(user))
+     const users = null
+    dispatch(logout())
     reset()
     navigate('/')
 } 
@@ -21,7 +22,7 @@ const {user}=useSelector((state)=>state.user)
   return (
     <Navbar bg="dark" expand="lg" variant="dark" fixed="top" >
         <Container >
-            <Navbar.Brand href="#home">BLOG</Navbar.Brand>
+            <Navbar.Brand href="#home" className='logo'>BLOG</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" >
                 {user?(<Nav className="me-auto">
