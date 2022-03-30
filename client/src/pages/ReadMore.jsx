@@ -1,9 +1,10 @@
 import React,{useEffect,useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Card,} from 'react-bootstrap';
+import {Card,Container,Row,Col} from 'react-bootstrap';
 import {  useParams,Link } from "react-router-dom";
 import {useSelector,useDispatch} from 'react-redux'
 import {getSingelBlog} from '../app/features/blogSlice';
+import { motion } from 'framer-motion';
 import '../App.css'
 const ReadMore = () => {
   const { blog, isLoading, isError, message } = useSelector(
@@ -32,9 +33,9 @@ const ReadMore = () => {
           </div>
       )
   } 
-  return (
-    <div className="main-red-mor">
-           <Card  className=' d-inline-block blog-read-redMore'>
+  //<div className="main-red-mor">
+  {/* <Container className='mt-5 mb-5 ' > */}
+  {/* <Card  className=' d-inline-block blog-read-redMore'>
             <Card.Img variant="top" src={redMore.image} style={{ height: '300px',padding:'50px' }}/>
             <Card.Body>
                 <Card.Title className='discript'>{redMore.titel}</Card.Title>
@@ -42,8 +43,32 @@ const ReadMore = () => {
                 {redMore.discripion}
                 </Card.Text>
             </Card.Body>
-        </Card>  
-    </div>
+        </Card> 
+        </Container> */}
+  return (
+    <motion.div
+        initial={{ y: "-300px", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: '-300px', opacity: 0 }}
+        //transition={{ type: "spring", bounce: 0.25 }}
+        transition={{
+          delay: 0.1,
+          x: { type: "tween", stiffness: 100 ,bounce: 0.25 },
+          default: { duration: 2 },
+        }} 
+    >
+      
+        <Container className=' read__more '>
+          <Row>
+            <Col>
+              <img variant="top" src={redMore.image} className='read__more__img'/>
+              <h1>{redMore.titel}</h1>
+              <p>{redMore.discripion}</p>
+            </Col>
+          </Row>
+        </Container>
+    </motion.div>
+           
   )
 }
 

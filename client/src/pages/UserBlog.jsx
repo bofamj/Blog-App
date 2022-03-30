@@ -64,7 +64,7 @@ const { blog, isLoading, isError, message } = useSelector(
                          {/* {console.log(blog.bloge)} */}
                                   { blog.map((blog)=>{
                                     return(
-                                            <Col  className='mt-5 d-flex justify-content-center' ><UserBlogs blog={blog} handelEdete={handelEdete} /></Col>
+                                            <Col  className='mt-5 d-flex justify-content-center' ><UserBlogs id={blog._id} blog={blog} handelEdete={handelEdete} /></Col>
                                         ) 
                                 })}    
                         </Row> 

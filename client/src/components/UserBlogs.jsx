@@ -25,6 +25,11 @@ const UserBlogs = ({blog,handelEdete}) => {
         initial={{ x: "-300px", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ y: '-300px', opacity: 0 }}
+        transition={{
+          delay: 0.1,
+          x: { type: "tween", stiffness: 100 },
+          default: { duration: 2 },
+        }}
     >
         <Card style={{ width: '18rem' }} className='h-100 d-inline-block singel-blog'>
             <Card.Img variant="top" src={blog.image} />

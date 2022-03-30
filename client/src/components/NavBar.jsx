@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
 import {  Link } from 'react-router-dom';
 import '../App.css'
+import { motion } from 'framer-motion';
 import {getUserBlogs} from '../app/features/blogSlice';
 import {getAllblogs} from '../app/features/blogSlice';
 
@@ -20,20 +21,32 @@ const {user}=useSelector((state)=>state.user)
 } 
 
   return (
+    
     <Navbar bg="dark" expand="lg" variant="dark" fixed="top" >
-        <Container >
-            <Navbar.Brand href="#home" className='logo'>BLOG</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav" >
-                {user?(<Nav className="me-auto">
-                <Nav.Link href="#home"><Link to='/' className='links'>Home</Link></Nav.Link>
-                <Nav.Link href="#link"><Link to='/blog' className='links' onClick={()=>dispatch(getAllblogs())}>All-blogs</Link></Nav.Link>
-                <Nav.Link href="#link"><Link to='/user-blogs' className='links' onClick={()=>dispatch(getUserBlogs())}>User-blogs</Link></Nav.Link>
-                <Nav.Link href="#link"><Link to='/creat-blog' className='links'>Creat-Blog</Link></Nav.Link>
-                <Nav.Link  onClick={logOUt}>LOGOUT</Nav.Link>
-                </Nav>):''}
-            </Navbar.Collapse>
-        </Container>
+        <motion.div
+            initial={{ x: "-300px", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ y: '-300px', opacity: 0 }}
+            transition={{
+            delay: 0.1,
+            x: { type: "tween", stiffness: 100 },
+            default: { duration: 2 },
+            }}
+        >
+            <Container >
+                <Navbar.Brand href="#home" className='logo'>BLOG</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav" >
+                    {user?(<Nav className="me-auto">
+                    <Nav.Link href="#home"><Link to='/' className='links'>Home</Link></Nav.Link>
+                    <Nav.Link href="#link"><Link to='/blog' className='links' onClick={()=>dispatch(getAllblogs())}>All-blogs</Link></Nav.Link>
+                    <Nav.Link href="#link"><Link to='/user-blogs' className='links' onClick={()=>dispatch(getUserBlogs())}>User-blogs</Link></Nav.Link>
+                    <Nav.Link href="#link"><Link to='/creat-blog' className='links'>Creat-Blog</Link></Nav.Link>
+                    <Nav.Link  onClick={logOUt}>LOGOUT</Nav.Link>
+                    </Nav>):''}
+                </Navbar.Collapse>
+            </Container>
+        </motion.div>
     </Navbar>
   )
 }

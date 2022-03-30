@@ -28,28 +28,27 @@ const handelSubmit = (e)=>{
     });
 } 
 
-
+//*<div className="blog-form">
 
   return (
-    <div className="blog-form">
-        <Container >
-        <Form onSubmit={handelSubmit}>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Inter Titel</Form.Label>
-                    <Form.Control type="text" name="titel" value={titel} onChange={handelChange}placeholder="Inter Titel"  />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Weite your blog</Form.Label>
-                    <Form.Control as="textarea" rows={3} name="discripion" value={discripion} onChange={handelChange}/>
-                </Form.Group>
-                <Button variant="primary" type="submit" >
-                                Submit
-                </Button>
-        </Form>
-            
-            
+    
+        <Container className='creat__blog__cont d-flex justify-content-center align-items-center'>
+            <Form onSubmit={handelSubmit} className="mb-3 w-75  ">
+                    <Form.Group className="mb-3 w-100 " controlId="exampleForm.ControlInput1">
+                        <Form.Label>Inter Titel</Form.Label>
+                        <Form.Control type="text" name="titel" value={titel} onChange={handelChange}placeholder="Inter Titel"  />
+                    </Form.Group>
+                    <Form.Group className="mb-3 creat__blog__form" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Write your blog</Form.Label>
+                        <Form.Control as="textarea" rows={3} name="discripion" value={discripion} onChange={handelChange}/>
+                    </Form.Group>
+                    <Button variant="primary" type="submit" >
+                                    Submit
+                    </Button>
+            </Form>
         </Container>
-    </div>
+    
+   
   )
 }
 
