@@ -49,7 +49,7 @@ const logout = () => {
 const authService = {
     register,
     login,
-    logout,
+    //logout,
     //getBlog
 }
 

@@ -5,7 +5,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import {getUserBlogs,deletBlog} from '../app/features/blogSlice';
 import '../App.css'
 import { motion } from 'framer-motion';
-
+import { Link } from "react-router-dom";
 
 const UserBlogs = ({blog,handelEdete}) => {
   const [readMore, setReadMore] = useState(false);
@@ -31,9 +31,10 @@ const UserBlogs = ({blog,handelEdete}) => {
             <Card.Body>
                 <Card.Title>{blog.titel}</Card.Title>
                 <Card.Text >
-                  {readMore ? blog.discripion : `${blog.discripion.substring(0, 100)}...`}
+                    <Link className='read-lenk' to={`/${blog._id}`} >{readMore ? blog.discripion : `${blog.discripion.substring(0, 100)}... `}   <span className='read-span'>Read More</span>
+                    </Link>
                 </Card.Text>
-                {/* <Button variant="primary" className='mb-1' onClick={()=>setReadMore(!readMore)}>Read More</Button> */}
+                
                 <Button variant="primary" className='btn-user-cart-edete' id={blog._id} onClick={(e)=>handelEdete(e)}>Edete</Button>{' '}
                 <Button variant="danger" className='ms-2 btn-user-cart-delet' onClick={() => dispatch(deletBlog(blog._id))}>Dleate</Button>
             </Card.Body>

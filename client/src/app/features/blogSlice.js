@@ -14,6 +14,20 @@ export const getAllblogs = createAsyncThunk('/allBlogs',async (_,thunkAPI)=>{
 })
 
 
+//* get a singel blog
+
+export const getSingelBlog = createAsyncThunk('blog/getSingelBlog',async(blogId,thunkAPI)=>{
+  try {
+    const token = thunkAPI.getState().user.user.token
+    return await axios.get(`http://localhost:5001/api/v1/blogs/${blogId}`,token)
+  } catch (error) {
+    const message = (error.response && error.response.message && error.response.data ) || error.message || error.toString()
+        return thunkAPI(message)
+    }
+  
+})
+
+
 //*get a user blogs
 export const  getUserBlogs = createAsyncThunk('/getUserBlogs',async (_,thunkAPI)=>{
     try {
@@ -149,6 +163,20 @@ export const blogSlice = createSlice({
         console.log(action.payload)
       })
       .addCase(edeatBlog.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(getSingelBlog.pending, (state) => {
+        state.isLoading = true
+        state.isSuccess = false
+      })
+      .addCase(getSingelBlog.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.blog = action.payload
+      })
+      .addCase(getSingelBlog.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

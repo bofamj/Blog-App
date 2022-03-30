@@ -1,3 +1,6 @@
+*{
+  text-decoration:none;
+}
 .logo{
   font-family: 'Inspiration', cursive;
   font-weight:600;
@@ -51,6 +54,11 @@
 .btn-continer{
   display:flex;
   justify-content: space-around;
+}
+.login-btn{
+  color: rgb(10, 10, 10);
+  border: 0.5px solid rgb(0, 0, 0);
+  padding:0 5px
 }
 .btn-btn{
   display: block;
@@ -120,8 +128,20 @@
   justify-content:center;
   
 }
-
-
+.read-lenk{
+  text-decoration:none;
+  color:black;
+  pointer-events: none;
+}
+.read-span{
+  color:rgb(7, 19, 194);
+  cursor: pointer;
+  pointer-events:painted
+}
+.read-lenk:hover{
+  text-decoration:none;
+  color:black
+}
 /*model  */
 
 .model{

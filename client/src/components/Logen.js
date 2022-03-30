@@ -65,20 +65,20 @@ if(isLoading){
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} value={password} />
                         </Form.Group>
-                        <div className="mb-4  w-50  btn-continer" >
-                            <div   className=' btn-btn' style={{ color: '#aaaa'}}>
-                                <span className="link" to="/login" style={{ color: 'black'}}>Submit</span>
+                        {/* <div className="mb-4  w-50  btn-continer" >
+                            <div   className=' btn-btn login-btn' type="submit"  >
+                                <span className="link " to="/login" >Submit</span>
                             </div>{' '}
-                            <div   className=' btn-btn'>
-                                <Link className="link" to="/ragester" style={{ color: 'black'}}>RAGESTER</Link>
+                            <div   className=' btn-btn login-btn'>
+                                <Link className="link " to="/ragester" >RAGESTER</Link>
                             </div>
-                        </div>
-                        {/* <Button variant="primary" type="submit" className='mr-5' >
+                        </div> */}
+                         <Button variant="primary" type="submit" className='mr-5' >
                             Submit
                         </Button>
                         <Button variant="primary" type="submit"  >
                             Register
-                        </Button> */}
+                        </Button> 
                     </Form>
                 </Col>
             </Row>

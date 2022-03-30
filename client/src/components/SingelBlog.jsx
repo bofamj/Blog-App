@@ -22,8 +22,8 @@ const SingelBlog = ({discripion,titel,image,author,_id}) => {
             <Card.Body>
                 <Card.Title>{titel}</Card.Title>
                 <Card.Text>
-                    {/* <Link to={`/${_id}`} >{readMore ? discripion : `${discripion.substring(0, 100)}... Read More`}
-                    </Link> */}
+                    <Link className='read-lenk' to={`/${_id}`} >{readMore ? discripion : `${discripion.substring(0, 100)}... `}<span className='read-span'>Read More</span>
+                    </Link>
                   
                 </Card.Text>
                 {/* <Button variant="primary" className='mb-1' onClick={()=>setReadMore(!readMore)}>Read More</Button> */}
