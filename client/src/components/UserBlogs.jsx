@@ -6,7 +6,9 @@ import {getUserBlogs,deletBlog} from '../app/features/blogSlice';
 import '../App.css'
 import { motion } from 'framer-motion';
 import { Link } from "react-router-dom";
-
+import { BsChevronDoubleRight,BsFillTrashFill } from "react-icons/bs";
+import { TiEdit } from "react-icons/ti";
+//BsChevronDoubleRight
 const UserBlogs = ({blog,handelEdete}) => {
   const [readMore, setReadMore] = useState(false);
   const dispatch = useDispatch()
@@ -36,12 +38,12 @@ const UserBlogs = ({blog,handelEdete}) => {
             <Card.Body>
                 <Card.Title>{blog.titel}</Card.Title>
                 <Card.Text >
-                    <Link className='read-lenk' to={`/${blog._id}`} >{readMore ? blog.discripion : `${blog.discripion.substring(0, 100)}... `}   <span className='read-span'>Read More</span>
+                    <Link className='read-lenk' to={`/${blog._id}`} >{readMore ? blog.discripion : `${blog.discripion.substring(0, 100)}... `}   <span className='read-span'>Read More --<BsChevronDoubleRight/> </span>
                     </Link>
                 </Card.Text>
                 
-                <Button variant="primary" className='btn-user-cart-edete' id={blog._id} onClick={(e)=>handelEdete(e)}>Edete</Button>{' '}
-                <Button variant="danger" className='ms-2 btn-user-cart-delet' onClick={() => dispatch(deletBlog(blog._id))}>Dleate</Button>
+                <div id={blog._id} onClick={(e)=>handelEdete(e)}  className='btn' ><TiEdit className='edite'/></div>{' '}
+                <div  className='btn' onClick={() => dispatch(deletBlog(blog._id))}><BsFillTrashFill className='delet'/></div>
             </Card.Body>
         </Card>
     </motion.div>

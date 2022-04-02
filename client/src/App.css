@@ -136,7 +136,8 @@
 .read-span{
   color:rgb(7, 19, 194);
   cursor: pointer;
-  pointer-events:painted
+  pointer-events:painted;
+  font-size:12px
 }
 .read-lenk:hover{
   text-decoration:none;
@@ -227,3 +228,44 @@
   justify-content:center;
   align-items: center;
 } */
+
+/*log in and logout btn*/
+.log-in-btn{
+  background-color:rgb(52, 58, 64);
+  padding:5px 20px;
+  border-radius:3px;
+  cursor:pointer
+}
+
+.log-in-btn .link{
+  color:white;
+
+}
+
+.log-in-btn .link:hover{
+  text-decoration:none;
+}
+.login-continer{
+  display:flex;
+  justify-content:space-between;
+  max-width:270px;
+  min-width: 230px;
+  margin-right:2px;
+}
+/* user card btn*/
+.btn{
+  background-color:none;
+  
+}
+.delet{
+  color:rgb(52, 58, 64);
+  font-size: 20px;
+}
+.edite{
+  color:rgb(52, 58, 64);
+  font-size: 20px;
+}
+
+
+
+

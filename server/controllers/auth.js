@@ -23,7 +23,7 @@ const login =async (req,res)=>{
     }
     const isPassowrd  = await user.comparePassword(password)
     if(!isPassowrd){
-        throw new BadRequestError('please provide the right passowrd')
+         throw new BadRequestError('please provide the right passowrd')
     }
     const token = user.createJWT()
     res.status(StatusCodes.OK).json({user:{userId:user._id,name:user.name},token})

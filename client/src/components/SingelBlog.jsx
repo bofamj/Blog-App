@@ -5,7 +5,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import { Link } from "react-router-dom";
 import '../App.css'
 import { motion } from 'framer-motion';
-
+import { BsChevronDoubleRight } from "react-icons/bs";
 const SingelBlog = ({discripion,titel,image,author,_id}) => {
   const [readMore, setReadMore] = useState(false);
   //console.log(titel);
@@ -27,7 +27,7 @@ const SingelBlog = ({discripion,titel,image,author,_id}) => {
             <Card.Body>
                 <Card.Title>{titel}</Card.Title>
                 <Card.Text>
-                    <Link className='read-lenk' to={`/${_id}`} >{readMore ? discripion : `${discripion.substring(0, 100)}... `}<span className='read-span'>Read More</span>
+                    <Link className='read-lenk' to={`/${_id}`} >{readMore ? discripion : `${discripion.substring(0, 100)}... `}<span className='read-span'>Read More --<BsChevronDoubleRight/></span>
                     </Link>
                   
                 </Card.Text>

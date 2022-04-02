@@ -15,9 +15,11 @@ const dispatch = useDispatch()
 const {user}=useSelector((state)=>state.user)
  const logOUt = ()=>{
      const users = null
-   /*  dispatch(logout())
+     dispatch(logout())
     reset()
-    navigate('/') */
+    navigate('/') 
+    window.location.reload();
+    return false;
 } 
 
   return (
