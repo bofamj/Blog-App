@@ -66,7 +66,7 @@ export const userSlice = createSlice({
             .addCase(register.rejected,(state,action)=>{
                 state.isLoading=false
                 state.isError=true
-                state.massage=action.payload
+                state.massage={massage:'please provide name, email and password'}
                 state.user = null
             })
              .addCase(login.pending,(state)=>{
@@ -80,8 +80,9 @@ export const userSlice = createSlice({
             .addCase(login.rejected,(state,action)=>{
                 state.isLoading=false
                 state.isError=true
-                state.massage=action.payload
+                state.massage={massage:'please provide the right email and password'}
                 state.user = null
+                console.log(action.payload)
             })
              .addCase(logout.fulfilled, (state,action) => {
                 state.user = null

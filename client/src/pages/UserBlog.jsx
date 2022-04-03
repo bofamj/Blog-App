@@ -1,13 +1,13 @@
 import {useEffect,useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Button,Row,Col,Nav,Spinner} from 'react-bootstrap';
+import {Container,Button,Row,Col,Nav,Spinner,Card} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
 import '../App.css'
 import Model from '../components/Model';
 import {getUserBlogs,edeatBlog,deletBlog,reset} from '../app/features/blogSlice';
 import UserBlogs from '../components/UserBlogs'
-
+import { motion } from 'framer-motion';
 
 const UserBlog = () => {
     const [isOpen,setIsOpen]=useState(false)
@@ -61,13 +61,28 @@ const { blog, isLoading, isError, message } = useSelector(
             return (
                     <Container className='mt-5 mb-5 ' >
                          <Row  >
-                         {/* {console.log(blog.bloge)} */}
-                                  { blog.map((blog)=>{
-                                    return(
-                                            <Col  className='mt-5 d-flex justify-content-center' ><UserBlogs id={blog._id} blog={blog} handelEdete={handelEdete} /></Col>
-                                        ) 
-                                })}    
-                        </Row> 
+                           
+                         { blog.length === 0 ?<motion.div
+                                  initial={{ x: "-300px", opacity: 0 }}
+                                  animate={{ x: 0, opacity: 1 }}
+                                  exit={{ y: '-300px', opacity: 0 }}
+                                  transition={{
+                                    delay: 0.1,
+                                    x: { type: "tween", stiffness: 100 },
+                                    default: { duration: 2 },
+                                  }}
+                              ><Container style={{ width: '18rem' }} className='h-100 mt-5 d-flex justify-content-center'>
+                                    <h3>you have no blog</h3>
+                                </Container>
+                              </motion.div>:blog.map((blog)=>{
+                                      
+                                      return(
+                                        <Col  className='mt-5 d-flex justify-content-center' ><UserBlogs id={blog._id} blog={blog} handelEdete={handelEdete} /></Col>
+                                          ) 
+                                      
+                                  })}  
+                                      
+                          </Row> 
                          {isOpen && (<div className='model'> <Model isOpen={isOpen}  setIsOpen={setIsOpen} edite={edite}/></div>)} 
                     </Container>
             )
@@ -75,3 +90,4 @@ const { blog, isLoading, isError, message } = useSelector(
 }
 
 export default UserBlog
+//{blog.lenth == 0 ? console.log(blog.lenth):

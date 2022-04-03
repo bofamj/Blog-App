@@ -32,14 +32,17 @@ const handelSubmit = async (e)=>{
 useEffect(()=>{
     if(isError){
         console.log(massage);
+      
     }
-    if(isSuccess|| user){
+    if(isSuccess && user){
         dispatch(getAllblogs())
         navigate('/blog')
+        
     }
     //dispatch(getUserBlogs())
     dispatch(reset) 
 },[isError,isSuccess,navigate,dispatch,user,massage])
+
 
 if(isLoading){
     return <Spinner animation="border" role="status">
@@ -50,6 +53,9 @@ if(isLoading){
   return (
     <div className="form">
         <Container>
+            {massage?<div class="alert alert-danger" role="alert">
+                {massage.massage}
+                </div>:''}
             <Row className="justify-content-center">
                 <Col xs={12} md={5}>
                     <Form onSubmit={handelSubmit}>
@@ -65,14 +71,7 @@ if(isLoading){
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} value={password} />
                         </Form.Group>
-                        {/* <div className="mb-4  w-50  btn-continer" >
-                            <div   className=' btn-btn login-btn' type="submit"  >
-                                <span className="link " to="/login" >Submit</span>
-                            </div>{' '}
-                            <div   className=' btn-btn login-btn'>
-                                <Link className="link " to="/ragester" >RAGESTER</Link>
-                            </div>
-                        </div> */}
+                        
                          <Button variant="primary" type="submit" className='mr-5' >
                             Submit
                         </Button>
@@ -88,3 +87,13 @@ if(isLoading){
 }
 
 export default Logen
+
+
+{/* <div className="mb-4  w-50  btn-continer" >
+                            <div   className=' btn-btn login-btn' type="submit"  >
+                                <span className="link " to="/login" >Submit</span>
+                            </div>{' '}
+                            <div   className=' btn-btn login-btn'>
+                                <Link className="link " to="/ragester" >RAGESTER</Link>
+                            </div>
+                        </div> */}

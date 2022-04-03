@@ -37,7 +37,7 @@ const Ragester = () => {
           if(isSuccess || user){
             navigate('/blog')
         }  
-        dispatch(reset())
+        //dispatch(reset())
     },[isError,isSuccess,user,dispatch,navigate,massage])
     const handelSubmit= (e)=>{
         e.preventDefault()
@@ -59,6 +59,9 @@ const Ragester = () => {
   return (
       <div className="form">
         <Container >
+        {massage?<div class="alert alert-danger" role="alert">
+                {massage.massage}
+                </div>:''}
             <Row className="justify-content-center align-items-center " >
                 <Col xs={12} md={5}>
                     <Form onSubmit={handelSubmit}>
