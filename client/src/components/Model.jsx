@@ -6,7 +6,10 @@ import {edeatBlog} from '../app/features/blogSlice'
 import '../App.css'
 import { motion } from 'framer-motion';
 
-const Model = ({setIsOpen,edite,isOpen}) => {
+const Model = ({setIsOpen,isOpen,edite}) => {
+  //const {titel,discripion,_id}={...edite}
+  console.log(...edite)
+  
     //const useSelector = useSelector()
     const dispatch = useDispatch()
     //const{_id}=edite;
@@ -15,7 +18,7 @@ const Model = ({setIsOpen,edite,isOpen}) => {
         discripion:edite[0].discripion,
         id:edite[0]._id
     })
-    const {id,titel,discripion}=editValue;
+    //const {id,titel,discripion}=editValue;
      let  flip = {
         hidden: {
           transform: "scale(0) rotateX(-360deg)",
