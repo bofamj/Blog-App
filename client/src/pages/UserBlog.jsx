@@ -83,7 +83,7 @@ const { blog, isLoading, isError, message } = useSelector(
                                   })}  
                                       
                           </Row> 
-                         {isOpen && (<div className='model'> <Model isOpen={isOpen}  setIsOpen={setIsOpen} edite={edite}/></div>)} 
+                         {isOpen && (<div className='model'> <Model isOpen={isOpen}  setIsOpen={setIsOpen} {...edite}/>{console.log({...edite})}</div>)} 
                     </Container>
             )
 

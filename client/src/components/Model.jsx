@@ -6,17 +6,17 @@ import {edeatBlog} from '../app/features/blogSlice'
 import '../App.css'
 import { motion } from 'framer-motion';
 
-const Model = ({setIsOpen,isOpen,edite}) => {
+const Model = ({setIsOpen,isOpen,titel,discripion,_id}) => {
   //const {titel,discripion,_id}={...edite}
-  console.log(...edite)
+  console.log(titel,discripion,_id)
   
     //const useSelector = useSelector()
     const dispatch = useDispatch()
     //const{_id}=edite;
     const [editValue,setEditValue]=useState({
-        titel:edite[0].titel,
-        discripion:edite[0].discripion,
-        id:edite[0]._id
+        titel:titel,
+        discripion:discripion,
+        id:_id
     })
     //const {id,titel,discripion}=editValue;
      let  flip = {

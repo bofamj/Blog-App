@@ -61,8 +61,11 @@ const ReadMore = () => {
         <Container className=' read__more '>
           <Row>
             <Col>
+              
               <img variant="top" src={redMore.image} className='read__more__img'/>
               <h1>{redMore.titel}</h1>
+            </Col>
+            <Col className='red-para'>
               <p>{redMore.discripion}</p>
             </Col>
           </Row>
