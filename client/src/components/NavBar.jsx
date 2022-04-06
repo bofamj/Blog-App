@@ -13,6 +13,7 @@ const NavBar = () => {
   const navigate = useNavigate()
 const dispatch = useDispatch()
 const {user}=useSelector((state)=>state.user)
+//console.log(user.user.name)
  const logOUt = ()=>{
      const users = null
      dispatch(logout())
@@ -45,6 +46,7 @@ const {user}=useSelector((state)=>state.user)
                     <Nav.Link href="#link"><Link to='/user-blogs' className='links' onClick={()=>dispatch(getUserBlogs())}>User-blogs</Link></Nav.Link>
                     <Nav.Link href="#link"><Link to='/creat-blog' className='links'>Creat-Blog</Link></Nav.Link>
                     <Nav.Link  onClick={logOUt}>LOGOUT</Nav.Link>
+                    <Nav.Link  className='user'>welcome: {user.user.name}</Nav.Link>
                     </Nav>):''}
                 </Navbar.Collapse>
             </Container>

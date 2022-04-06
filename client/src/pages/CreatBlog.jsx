@@ -10,10 +10,11 @@ const CreatBlog = () => {
     const [addBlog,setAddBlog] = useState({
         titel:'',
         discripion:'',
+        image:'',
     });
 
 
-    const {titel,discripion} = addBlog;
+    const {titel,discripion,image} = addBlog;
     const handelChange = (e) => {
         setAddBlog((prevState)=>({...prevState,[e.target.name]:e.target.value}))
     }
@@ -21,10 +22,11 @@ const CreatBlog = () => {
 const handelSubmit = (e)=>{
     e.preventDefault()
     //console.log(despatch(creatBlog({titel,discripion})));
-     despatch(creatBlog({titel,discripion}))
+     despatch(creatBlog({titel,discripion,image}))
     setAddBlog({
         titel:'',
         discripion:'',
+        image:'',
     });
 } 
 
@@ -34,14 +36,19 @@ const handelSubmit = (e)=>{
     
         <Container className='creat__blog__cont d-flex justify-content-center align-items-center'>
             <Form onSubmit={handelSubmit} className="mb-3 w-75  ">
+                    <Form.Group className="mb-3 creat__blog__form" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Enter image URL</Form.Label>
+                        <Form.Control type="text" name="image" value={image} onChange={handelChange}placeholder="enter your url"  />
+                    </Form.Group>
                     <Form.Group className="mb-3 w-100 " controlId="exampleForm.ControlInput1">
-                        <Form.Label>Inter Titel</Form.Label>
-                        <Form.Control type="text" name="titel" value={titel} onChange={handelChange}placeholder="Inter Titel"  />
+                        <Form.Label>Enter Titel</Form.Label>
+                        <Form.Control type="text" name="titel" value={titel} onChange={handelChange}placeholder="enter Titel"  />
                     </Form.Group>
                     <Form.Group className="mb-3 creat__blog__form" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Write your blog</Form.Label>
                         <Form.Control as="textarea" rows={3} name="discripion" value={discripion} onChange={handelChange}/>
                     </Form.Group>
+                    
                     <Button variant="primary" type="submit" >
                                     Submit
                     </Button>

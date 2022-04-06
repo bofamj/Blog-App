@@ -37,7 +37,9 @@
   color:rgb(249, 249, 249);
   padding-left: 10px;
 }
-
+.user{
+  text-transform: uppercase;
+}
 .form{
   height:100vh;
   background-color:rgb(249, 249, 249);
