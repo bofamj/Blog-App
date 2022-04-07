@@ -42,8 +42,8 @@ const UserBlogs = ({blog,handelEdete}) => {
                     </Link>
                 </Card.Text>
                 
-                <div   className='btn' ><TiEdit className='edite' id={blog._id} onClick={(e)=>handelEdete(e)}/></div>{' '}
-                <div  className='btn' ><BsFillTrashFill className='delet' onClick={() => dispatch(deletBlog(blog._id))}/></div>
+                <TiEdit className='edite' id={blog._id} onClick={(e)=>handelEdete(e)}/>{' '}
+                <BsFillTrashFill className='delet' onClick={() => dispatch(deletBlog(blog._id))}/>
             </Card.Body>
         </Card>
     </motion.div>
@@ -51,3 +51,6 @@ const UserBlogs = ({blog,handelEdete}) => {
 }
 
 export default UserBlogs
+
+
+//<div   className='btn' >

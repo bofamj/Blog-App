@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 
 const Model = ({setIsOpen,isOpen,titel,discripion,_id}) => {
   //const {titel,discripion,_id}={...edite}
-  console.log(titel,discripion,_id)
+  console.log(discripion)
   
     //const useSelector = useSelector()
     const dispatch = useDispatch()

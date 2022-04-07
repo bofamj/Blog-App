@@ -45,9 +45,9 @@ const { blog, isLoading, isError, message } = useSelector(
         const handelEdete = (e)=> {
              setIsOpen(true)
              const edet = blog.filter((blog)=>blog._id === e.target.id)
-             setEdite(edet) 
+             setEdite(...edet) 
         }
-        console.log(...edite)
+        console.log(edite)
         if(isLoading ){
             return (
                 <div className="d-flex justify-content-center mt-5 text-center  spener">
@@ -72,7 +72,7 @@ const { blog, isLoading, isError, message } = useSelector(
                                     default: { duration: 2 },
                                   }}
                               ><Container style={{ width: '100rem' }} className='h-100 mt-5 d-flex justify-content-center text-uppercase'>
-                                    <h3>you have no blog let's add some</h3>
+                                    <h3>you have no post let's add some</h3>
                                 </Container>
                               </motion.div>:blog.map((blog)=>{
                                       

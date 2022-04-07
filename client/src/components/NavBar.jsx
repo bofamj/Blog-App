@@ -4,11 +4,12 @@ import {reset,logout} from '../app/features/userSlice';
 import { useNavigate } from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
 import {  Link } from 'react-router-dom';
+import {IoMdLogOut} from "react-icons/io";
 import '../App.css'
 import { motion } from 'framer-motion';
 import {getUserBlogs} from '../app/features/blogSlice';
 import {getAllblogs} from '../app/features/blogSlice';
-
+//GrLogout
 const NavBar = () => {
   const navigate = useNavigate()
 const dispatch = useDispatch()
@@ -45,10 +46,11 @@ const {user}=useSelector((state)=>state.user)
                     <Nav.Link href="#link"><Link to='/blog' className='links' onClick={()=>dispatch(getAllblogs())}>All-blogs</Link></Nav.Link>
                     <Nav.Link href="#link"><Link to='/user-blogs' className='links' onClick={()=>dispatch(getUserBlogs())}>User-blogs</Link></Nav.Link>
                     <Nav.Link href="#link"><Link to='/creat-blog' className='links'>Creat-Blog</Link></Nav.Link>
-                    <Nav.Link  onClick={logOUt}>LOGOUT</Nav.Link>
                     <Nav.Link  className='user'>welcome: {user.user.name}</Nav.Link>
+                    <Nav.Link  ><IoMdLogOut onClick={logOUt}  className='logout'/></Nav.Link>
                     </Nav>):''}
                 </Navbar.Collapse>
+                {/* <p className='user'>welcome: {user.user.name}</p> */}
             </Container>
         </motion.div>
     </Navbar>

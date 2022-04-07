@@ -2,7 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Form,Button,Row,Col} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
+import {AiOutlineLogin} from "react-icons/ai";
+import {BiRegistered} from "react-icons/bi";
 import '../App.css'
+//AiOutlineLogin   BiRegistered
 const Home = () => {
   return (
     <div className="main home-main">
@@ -25,7 +28,7 @@ const Home = () => {
                                 }} 
                                 className='log-in-btn'
                         >
-                            <Link className="link" to="/login">LOGEN</Link>
+                            <Link className="link home-btn" to="/login"><AiOutlineLogin/> LOGEN</Link>
                         </motion.div>{' '}
                         <motion.div
                                 initial={{ y: "300px", opacity: 0 }}
@@ -39,7 +42,7 @@ const Home = () => {
                                 }} 
                                 className='log-in-btn'
                             >
-                                <Link className="link" to="/ragester">RAGESTER</Link>
+                                <Link className="link home-btn" to="/ragester"><BiRegistered/> RAGiSTER </Link>
                             </motion.div>
                     </div>
                 </Col>

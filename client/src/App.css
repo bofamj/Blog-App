@@ -1,6 +1,9 @@
 *{
   text-decoration:none;
 }
+#root{
+  background-color:rgb(252, 252, 252); 
+}
 /*scrollbar*/
 /* width */
 ::-webkit-scrollbar {
@@ -23,7 +26,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000; 
 }
-
+.logout{
+  color: #fff;
+  font-size: 20px;
+}
 
 .logo{
   font-family: 'Inspiration', cursive;
@@ -145,6 +151,11 @@
   flex-direction: column;
   align-items: center;
   justify-content:center
+}
+
+.home-btn{
+  display:flex;
+  align-items:center;
 }
 
 .spener{
@@ -286,10 +297,13 @@
 .delet{
   color:rgb(52, 58, 64);
   font-size: 20px;
+  cursor:pointer;
 }
 .edite{
   color:rgb(52, 58, 64);
   font-size: 20px;
+  cursor:pointer;
+  pointer-events:painted
 }
 
 .red-para{
