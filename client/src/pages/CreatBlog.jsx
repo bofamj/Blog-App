@@ -22,6 +22,10 @@ const CreatBlog = () => {
 const handelSubmit = (e)=>{
     e.preventDefault()
     //console.log(despatch(creatBlog({titel,discripion})));
+    /* let images = image
+    if(!images){
+        return image = 'https://jquery-plugins.net/image/plugin/google-javascript-style-guide.png'
+    } */
      despatch(creatBlog({titel,discripion,image}))
     setAddBlog({
         titel:'',

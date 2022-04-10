@@ -12,13 +12,12 @@ const ReadMore = () => {
   )
   const [redMore,setRedMore]= useState([])
     const {id}=useParams()
-   // console.log(blog.filter((blog)=>blog._id === id))
     const read = ()=>{
       const redBlog = blog.filter((blog)=>blog._id === id)
       setRedMore(...redBlog)
     }
     //read()
-   // console.log(redMore)
+   console.log(redMore)
     
       useEffect(()=>{
         read()
@@ -33,18 +32,7 @@ const ReadMore = () => {
           </div>
       )
   } 
-  //<div className="main-red-mor">
-  {/* <Container className='mt-5 mb-5 ' > */}
-  {/* <Card  className=' d-inline-block blog-read-redMore'>
-            <Card.Img variant="top" src={redMore.image} style={{ height: '300px',padding:'50px' }}/>
-            <Card.Body>
-                <Card.Title className='discript'>{redMore.titel}</Card.Title>
-                <Card.Text className='discript'>
-                {redMore.discripion}
-                </Card.Text>
-            </Card.Body>
-        </Card> 
-        </Container> */}
+  
   return (
     <motion.div
         initial={{ y: "-300px", opacity: 0 }}
@@ -76,3 +64,19 @@ const ReadMore = () => {
 }
 
 export default ReadMore
+
+
+
+
+//<div className="main-red-mor">
+  {/* <Container className='mt-5 mb-5 ' > */}
+  {/* <Card  className=' d-inline-block blog-read-redMore'>
+            <Card.Img variant="top" src={redMore.image} style={{ height: '300px',padding:'50px' }}/>
+            <Card.Body>
+                <Card.Title className='discript'>{redMore.titel}</Card.Title>
+                <Card.Text className='discript'>
+                {redMore.discripion}
+                </Card.Text>
+            </Card.Body>
+        </Card> 
+        </Container> */}

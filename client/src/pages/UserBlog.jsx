@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react'
+import {useEffect,useState,useRef} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container,Button,Row,Col,Nav,Spinner,Card} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,7 @@ const {isSuccess,user}=useSelector((state)=>state.user)
 const { blog, isLoading, isError, message } = useSelector(
     (state) => state.blog
   )
-
+const element =useRef(null)
   useEffect(() => {
     if (isError) {
       console.log(message)
@@ -34,20 +34,21 @@ const { blog, isLoading, isError, message } = useSelector(
       dispatch(reset())
     }
   }, [user, navigate, isError, message, dispatch])
-        /* useEffect(()=>{
-
-            dispatch(getUserBlogs())
-            
-        },[]) */  
+          
 
         //*handel edite
 
         const handelEdete = (e)=> {
              setIsOpen(true)
              const edet = blog.filter((blog)=>blog._id === e.target.id)
-             setEdite(...edet) 
+             setEdite(...edet)
+             let battom =  e.target.getBoundingClientRect().bottom
+             const modelLoc = element.current
+             /* modelLoc.style.bottom = `${battom}px` */
+             console.log(battom,modelLoc)
+             //document.documentElement.scrollTop()
+             //element.getBoundingClientRect()
         }
-        console.log(edite)
         if(isLoading ){
             return (
                 <div className="d-flex justify-content-center mt-5 text-center  spener">
@@ -83,7 +84,7 @@ const { blog, isLoading, isError, message } = useSelector(
                                   })}  
                                       
                           </Row> 
-                         {isOpen && (<div className='model'> <Model isOpen={isOpen}  setIsOpen={setIsOpen} {...edite}/>{console.log({...edite})}</div>)} 
+                         {isOpen && ( <Model isOpen={isOpen}  setIsOpen={setIsOpen} {...edite}/>)} 
                     </Container>
             )
 
@@ -91,3 +92,4 @@ const { blog, isLoading, isError, message } = useSelector(
 
 export default UserBlog
 //{blog.lenth == 0 ? console.log(blog.lenth):
+//<div className='model' >

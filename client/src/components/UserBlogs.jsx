@@ -42,8 +42,8 @@ const UserBlogs = ({blog,handelEdete}) => {
                     </Link>
                 </Card.Text>
                 
-                <TiEdit className='edite' id={blog._id} onClick={(e)=>handelEdete(e)}/>{' '}
-                <BsFillTrashFill className='delet' onClick={() => dispatch(deletBlog(blog._id))}/>
+                <div   className='btn' ><TiEdit className='edite' id={blog._id} onClick={(e)=>handelEdete(e)}/></div>{' '}
+                <div   className='btn' ><BsFillTrashFill className='delet' onClick={() => dispatch(deletBlog(blog._id))}/></div>
             </Card.Body>
         </Card>
     </motion.div>
