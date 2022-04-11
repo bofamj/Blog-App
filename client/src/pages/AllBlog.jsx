@@ -1,63 +1,57 @@
-import {useEffect} from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container,Button,Row,Col,Nav,Spinner} from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import {useSelector,useDispatch} from 'react-redux'
-import '../App.css'
-import SingelBlog from './../components/SingelBlog';
-import {getAllblogs} from '../app/features/blogSlice';
-import { motion } from 'framer-motion';
+import { useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Button, Row, Col, Nav, Spinner } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import "../App.css";
+import SingelBlog from "./../components/SingelBlog";
+import { getAllblogs } from "../app/features/blogSlice";
+import { motion } from "framer-motion";
 
 const AllBlog = () => {
-const navigate = useNavigate()
-const dispatch = useDispatch()
-const {isSuccess,user}=useSelector((state)=>state.user)
-const {blog,
-        isError,
-        isLoading,
-        massage}=useSelector((state)=>state.blog)
- 
-   
-        
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isSuccess, user } = useSelector((state) => state.user);
+  const { blog, isError, isLoading, massage } = useSelector(
+    (state) => state.blog
+  );
 
-  useEffect(()=>{
-    if(isError){
-        console.log(massage);
+  useEffect(() => {
+    if (isError) {
+      console.log(massage);
     }
-     if(user !== null){
-        dispatch(getAllblogs())
-    } 
+    if (user !== null) {
+      dispatch(getAllblogs());
+    }
     /* if(!user){
         navigate('/login')
     } */
-    
-},[isError,user,massage,dispatch])  
+  }, [isError, user, massage, dispatch]);
 
+  if (isLoading) {
+    return (
+      <div className="d-flex justify-content-center mt-5 text-center  spener">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
 
-if(isLoading ){
-        return (
-            <div className="d-flex justify-content-center mt-5 text-center  spener">
-                <div className="spinner-border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        )
-    } 
+  return (
+    <Container className="mt-5 mb-5">
+      <Row>
+        {/* {console.log(blog)} */}
+        {blog.map((blog) => {
+          return (
+            <Col id={blog._id} className="mt-5 d-flex justify-content-center">
+              <SingelBlog {...blog} />
+            </Col>
+          );
+        })}
+      </Row>
+    </Container>
+  );
+};
 
-        return (
-           
-                <Container className='mt-5 mb-5' >
-                        <Row  >
-                            {/* {console.log(blog)} */}
-                                { blog.map((blog)=>{
-                                    return(
-                                            <Col  className='mt-5 d-flex justify-content-center'  ><SingelBlog id={blog._id} {...blog}/></Col> 
-                                )
-                            })}   
-                        </Row> 
-                </Container>
-            
-        )
-}
-
-export default AllBlog
+export default AllBlog;

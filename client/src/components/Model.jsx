@@ -7,8 +7,6 @@ import "../App.css";
 import { motion } from "framer-motion";
 
 const Model = ({ setIsOpen, isOpen, titel, discripion, _id }) => {
-  console.log(discripion);
-
   const dispatch = useDispatch();
   const [editValue, setEditValue] = useState({
     titel,
@@ -55,8 +53,8 @@ const Model = ({ setIsOpen, isOpen, titel, discripion, _id }) => {
   return (
     <>
       <Modal show={isOpen} onHide={handelClick}>
-        <Modal.Header closeButton>
-          <Modal.Title>Edet Blog</Modal.Title>
+        <Modal.Header>
+          <Modal.Title>Edit Blog</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>

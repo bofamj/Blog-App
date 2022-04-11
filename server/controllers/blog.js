@@ -30,15 +30,15 @@ const getAllBlogs = async (req,res)=>{
 
 //*create a blog
 const createBlog =async (req,res)=>{
-     const {titel,discripion,image}=req.body
-    if(!titel  || !discripion ){
-        throw new BadRequestError('please provide the title and discripion ')
-    } 
-
-    req.body.createdBy = req.user.userId
-    req.body.author = req.user.name
-    const blog = await Blog.create(req.body)
-    res.status(StatusCodes.CREATED).json(blog)
+    
+        const {titel,discripion,image}=req.body
+        if(!titel  || !discripion ){
+            throw new BadRequestError('please provide the title and discripion ')
+        } 
+        req.body.createdBy = req.user.userId
+        req.body.author = req.user.name
+        const blog = await Blog.create(req.body)
+        res.status(StatusCodes.CREATED).json(blog)
 }
 
 
@@ -54,9 +54,10 @@ const getBlog =async (req,res)=>{
 
 //* update a single blog
 const updateBlog =async (req,res)=>{
-    const {user:{userId},params:{id:blogId},body:{titel,discripion,image}} = req
+   
+        const {user:{userId},params:{id:blogId},body:{titel,discripion,image}} = req
     //const blog = await Blog.findByIdAndUpdate({_id:blogId,createdBy:userId},req.body,{new:true,runValidators:true})
-    res.status(StatusCodes.OK).json(await Blog.findByIdAndUpdate({_id:blogId,createdBy:userId},req.body,{new:true,runValidators:true}))
+            res.status(StatusCodes.OK).json(await Blog.findByIdAndUpdate({_id:blogId,createdBy:userId},req.body,{new:true,runValidators:true}))
 }
 
 

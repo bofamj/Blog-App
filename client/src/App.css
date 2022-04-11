@@ -43,8 +43,13 @@
   color:rgb(249, 249, 249);
   padding-left: 10px;
 }
+.nav-contain{
+  width:90%
+}
 .user{
   text-transform: uppercase;
+  padding-left:550px;
+  display:flex;
 }
 .form{
   height:100vh;

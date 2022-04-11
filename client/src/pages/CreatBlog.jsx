@@ -1,72 +1,100 @@
-import React,{useState,useEffect} from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button,Row,Col,Form,Container,FloatingLabel} from 'react-bootstrap';
-import {creatBlog} from '../app/features/blogSlice'
-import {useDispatch} from 'react-redux'
+import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  Button,
+  Row,
+  Col,
+  Form,
+  Container,
+  FloatingLabel,
+} from "react-bootstrap";
+import { creatBlog } from "../app/features/blogSlice";
+import { useDispatch } from "react-redux";
 
-import '../App.css'
+import "../App.css";
 const CreatBlog = () => {
-    const despatch = useDispatch()
-    const [addBlog,setAddBlog] = useState({
-        titel:'',
-        discripion:'',
-        image:'',
-    });
+  const despatch = useDispatch();
+  const [addBlog, setAddBlog] = useState({
+    titel: "",
+    discripion: "",
+    image: "",
+  });
 
+  const { titel, discripion, image } = addBlog;
+  const handelChange = (e) => {
+    setAddBlog((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-    const {titel,discripion,image} = addBlog;
-    const handelChange = (e) => {
-        setAddBlog((prevState)=>({...prevState,[e.target.name]:e.target.value}))
-    }
-
-const handelSubmit = (e)=>{
-    e.preventDefault()
-    //console.log(despatch(creatBlog({titel,discripion})));
-    /* let images = image
-    if(!images){
-        return image = 'https://jquery-plugins.net/image/plugin/google-javascript-style-guide.png'
-    } */
-     despatch(creatBlog({titel,discripion,image}))
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    despatch(creatBlog({ titel, discripion, image }));
     setAddBlog({
-        titel:'',
-        discripion:'',
-        image:'',
+      titel: "",
+      discripion: "",
+      image: "",
     });
-} 
+  };
 
-//*<div className="blog-form">
+  //*<div className="blog-form">
 
   return (
-    
-        <Container className='creat__blog__cont d-flex justify-content-center align-items-center'>
-            <Form onSubmit={handelSubmit} className="mb-3 w-75  ">
-                    <Form.Group className="mb-3 creat__blog__form" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Enter image URL</Form.Label>
-                        <Form.Control type="text" name="image" value={image} onChange={handelChange}placeholder="enter your url"  />
-                    </Form.Group>
-                    <Form.Group className="mb-3 w-100 " controlId="exampleForm.ControlInput1">
-                        <Form.Label>Enter Titel</Form.Label>
-                        <Form.Control type="text" name="titel" value={titel} onChange={handelChange}placeholder="enter Titel"  />
-                    </Form.Group>
-                    <Form.Group className="mb-3 creat__blog__form" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Write your blog</Form.Label>
-                        <Form.Control as="textarea" rows={3} name="discripion" value={discripion} onChange={handelChange}/>
-                    </Form.Group>
-                    
-                    <Button variant="primary" type="submit" >
-                                    Submit
-                    </Button>
-            </Form>
-        </Container>
-    
-   
-  )
-}
+    <Container className="creat__blog__cont d-flex justify-content-center align-items-center">
+      <Form onSubmit={handelSubmit} className="mb-3 w-75  ">
+        <Form.Group
+          className="mb-3 creat__blog__form"
+          controlId="exampleForm.ControlTextarea1"
+        >
+          <Form.Label>Enter image URL</Form.Label>
+          <Form.Control
+            type="text"
+            name="image"
+            value={image}
+            onChange={handelChange}
+            placeholder="enter your url"
+          />
+        </Form.Group>
+        <Form.Group
+          className="mb-3 w-100 "
+          controlId="exampleForm.ControlInput1"
+        >
+          <Form.Label>Enter Titel</Form.Label>
+          <Form.Control
+            type="text"
+            name="titel"
+            value={titel}
+            onChange={handelChange}
+            placeholder="enter Titel"
+          />
+        </Form.Group>
+        <Form.Group
+          className="mb-3 creat__blog__form"
+          controlId="exampleForm.ControlTextarea1"
+        >
+          <Form.Label>Write your blog</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="discripion"
+            value={discripion}
+            onChange={handelChange}
+          />
+        </Form.Group>
 
-export default CreatBlog
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </Container>
+  );
+};
 
+export default CreatBlog;
 
-{/* <FloatingLabel controlId="floatingTextarea2" label="Comments" column="md" lg={3} style={{height: '200px'}} >
+{
+  /* <FloatingLabel controlId="floatingTextarea2" label="Comments" column="md" lg={3} style={{height: '200px'}} >
                     <Form.Control
                                     
                         as="textarea"
@@ -74,16 +102,20 @@ export default CreatBlog
                         style={{ height: '100px' }} name="discripion" value={discripion} onChange={handelChange}
                         column="md"
                     />
-                </FloatingLabel> */}
-                    
-                    {/* <Form.Label column lg={2}>
+                </FloatingLabel> */
+}
+
+{
+  /* <Form.Label column lg={2}>
                     Write Uer Blog
                     </Form.Label>
                     <Col>
                     <Form.Control type="text" name="discripion" value={discripion} onChange={handelChange} placeholder="Write Uer Blog" />
-                    </Col> */}
+                    </Col> */
+}
 
-                    {/* <Form onSubmit={handelSubmit}>
+{
+  /* <Form onSubmit={handelSubmit}>
                 <Row>
                     <Form.Label column="lg" lg={2}>
                     Inter Titel
@@ -101,4 +133,5 @@ export default CreatBlog
                     <Button variant="primary" type="submit" >
                                 Submit
                     </Button>
-            </Form> */}
+            </Form> */
+}
