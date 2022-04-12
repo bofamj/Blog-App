@@ -35,7 +35,7 @@ const createBlog =async (req,res)=>{
             const {titel,discripion,image}=req.body
             if(!titel||!discripion||!image ){
                 //throw new BadRequestError('please provide the title discripion and image ')
-                res.status(400).json({err,maseg:'please provide the title discripion and image'})
+                res.status(400).json({err,maseg:'please provide title discripion and image'})
             } 
             /* if(!titel||!discripion||!image){
                 res.status(500).send('please provide the title discripion and image')

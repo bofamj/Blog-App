@@ -33,7 +33,9 @@ const CreatBlog = () => {
   //*creact a post
   const handelSubmit = (e) => {
     e.preventDefault();
-
+    if (!titel || !discripion || !image) {
+      alert("please provide title discripion and image");
+    }
     dispatch(creatBlog({ titel, discripion, image }));
     setAddBlog({
       titel: "",
