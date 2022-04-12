@@ -82,7 +82,7 @@ export const userSlice = createSlice({
                 state.isError=true
                 state.massage={massage:'please provide the right email and password'}
                 state.user = null
-                console.log(action.payload)
+                
             })
              .addCase(logout.fulfilled, (state,action) => {
                 state.user = null

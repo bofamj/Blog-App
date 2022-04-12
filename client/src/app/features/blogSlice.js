@@ -151,6 +151,7 @@ export const blogSlice = createSlice({
         state.isLoading = false
         state.isError = true
         state.message = action.payload
+        console.log(action)
       })
       .addCase(edeatBlog.pending, (state) => {
         state.isLoading = true
@@ -160,7 +161,6 @@ export const blogSlice = createSlice({
         state.isLoading = false
         state.isSuccess = true
         state.blog = state.blog.map((blog)=>blog._id == action.payload._id ? action.payload:blog)
-        console.log(action.payload)
       })
       .addCase(edeatBlog.rejected, (state, action) => {
         state.isLoading = false

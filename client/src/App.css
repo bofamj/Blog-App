@@ -48,7 +48,7 @@
 }
 .user{
   text-transform: uppercase;
-  padding-left:550px;
+  /* padding-left:550px; */
   display:flex;
 }
 .form{

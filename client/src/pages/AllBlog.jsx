@@ -45,7 +45,7 @@ const AllBlog = () => {
         {blog.map((blog) => {
           return (
             <Col id={blog._id} className="mt-5 d-flex justify-content-center">
-              <SingelBlog {...blog} />
+              <SingelBlog id={blog._id} {...blog} />
             </Col>
           );
         })}

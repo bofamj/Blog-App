@@ -35,44 +35,46 @@ const NavBar = () => {
           x: { type: "tween", stiffness: 100 },
           default: { duration: 2 },
         }}
-        className="nav-contain"
+        className=" w-100  "
       >
-        <Container className="nav-contain">
+        <Container className="nav-contain ">
           <Navbar.Brand href="#home" className="logo">
             BLOG
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             {user ? (
-              <Nav className="me-auto">
-                <Nav.Link href="#home">
-                  <Link to="/" className="links">
-                    Home
-                  </Link>
-                </Nav.Link>
-                <Nav.Link href="#link">
-                  <Link
-                    to="/blog"
-                    className="links"
-                    onClick={() => dispatch(getAllblogs())}
-                  >
-                    All-blogs
-                  </Link>
-                </Nav.Link>
-                <Nav.Link href="#link">
-                  <Link
-                    to="/user-blogs"
-                    className="links"
-                    onClick={() => dispatch(getUserBlogs())}
-                  >
-                    User-blogs
-                  </Link>
-                </Nav.Link>
-                <Nav.Link href="#link">
-                  <Link to="/creat-blog" className="links">
-                    Creat-Blog
-                  </Link>
-                </Nav.Link>
+              <Nav className=" w-100  me-auto d-flex justify-content-lg-between">
+                <div className=" d-lg-flex  ">
+                  <Nav.Link href="#home">
+                    <Link to="/" className="links">
+                      Home
+                    </Link>
+                  </Nav.Link>
+                  <Nav.Link href="#link">
+                    <Link
+                      to="/blog"
+                      className="links"
+                      onClick={() => dispatch(getAllblogs())}
+                    >
+                      All-blogs
+                    </Link>
+                  </Nav.Link>
+                  <Nav.Link href="#link">
+                    <Link
+                      to="/user-blogs"
+                      className="links"
+                      onClick={() => dispatch(getUserBlogs())}
+                    >
+                      User-blogs
+                    </Link>
+                  </Nav.Link>
+                  <Nav.Link href="#link">
+                    <Link to="/creat-blog" className="links">
+                      Creat-Blog
+                    </Link>
+                  </Nav.Link>
+                </div>
                 <div className="user">
                   <Nav.Link>{user.user.name}</Nav.Link>
                   <Nav.Link>

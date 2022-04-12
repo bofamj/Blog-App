@@ -39,11 +39,12 @@ const Model = ({ setIsOpen, isOpen, titel, discripion, _id }) => {
   const handelClick = () => {
     setIsOpen(!isOpen);
   };
-
+  //*siving the edit value
   const handelSubmit = () => {
     dispatch(edeatBlog(editValue));
     setIsOpen(!isOpen);
   };
+
   const handelChange = (e) => {
     setEditValue((prevState) => ({
       ...prevState,

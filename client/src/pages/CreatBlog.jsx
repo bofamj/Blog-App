@@ -8,17 +8,20 @@ import {
   Container,
   FloatingLabel,
 } from "react-bootstrap";
-import { creatBlog } from "../app/features/blogSlice";
-import { useDispatch } from "react-redux";
+import { creatBlog, reset } from "../app/features/blogSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 import "../App.css";
 const CreatBlog = () => {
-  const despatch = useDispatch();
+  const dispatch = useDispatch();
+  const { isError, message } = useSelector((state) => state.blog);
   const [addBlog, setAddBlog] = useState({
     titel: "",
     discripion: "",
     image: "",
   });
+
+  const [error, setError] = useState(false);
 
   const { titel, discripion, image } = addBlog;
   const handelChange = (e) => {
@@ -27,22 +30,29 @@ const CreatBlog = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
+  //*creact a post
   const handelSubmit = (e) => {
     e.preventDefault();
-    despatch(creatBlog({ titel, discripion, image }));
+
+    dispatch(creatBlog({ titel, discripion, image }));
     setAddBlog({
       titel: "",
       discripion: "",
       image: "",
     });
   };
-
   //*<div className="blog-form">
 
   return (
     <Container className="creat__blog__cont d-flex justify-content-center align-items-center">
       <Form onSubmit={handelSubmit} className="mb-3 w-75  ">
+        {/* {error ? (
+          <div class="alert alert-danger" role="alert">
+            hy
+          </div>
+        ) : (
+          ""
+        )} */}
         <Form.Group
           className="mb-3 creat__blog__form"
           controlId="exampleForm.ControlTextarea1"

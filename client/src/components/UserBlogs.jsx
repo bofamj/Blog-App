@@ -13,15 +13,6 @@ const UserBlogs = ({ blog, handelEdete }) => {
   const [readMore, setReadMore] = useState(false);
   const dispatch = useDispatch();
 
-  /* const handelDlete = ()=>{
-    dispatch(deletBlog(_id))
-  }  */
-
-  /* useEffect(()=>{
-
-    dispatch(getUserBlogs())
-    
-},[deletBlog])   */
   return (
     <motion.div
       initial={{ x: "-300px", opacity: 0 }}
