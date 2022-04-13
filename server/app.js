@@ -16,15 +16,22 @@ app.use("/api/v1/auth", autheRouter);
 app.use("/api/v1/blogs", authentication, blogRouter);
 
 //! server static assets if in production NPM_CONFIG_PRODUCTION
-if (process.env.NODE_ENV === "production") {
+/* if (process.env.NODE_ENV === "production") {
   //*set static folder
   app.use(express.static("client/build"));
 
   app.get("*", (res, req) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
+} */
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
 }
-
 const port = process.env.PORT || 5001;
 
 const start = async () => {
